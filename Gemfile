@@ -39,6 +39,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'spring-commands-cucumber'
 end
 
 group :test do
@@ -47,6 +48,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'ffaker'
   gem 'launchy'
+  gem 'cucumber-rails', :require => false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -9,7 +9,7 @@ development:
   <<: *default
   database: ba_development
 
-test:
+test: &test
   <<: *default
   database: ba_test
 
@@ -18,3 +18,6 @@ production:
   database: ba_production
   username: san4o
   password: <%= ENV['BOOKSTORE_APP_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
