@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title BookstoreApp
+    %title Bookstore
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -11,4 +11,47 @@
     %p.alert
       = alert
     %br
-    = yield
+    = yield    
+%footer.navbar-inverse
+.container
+  .row
+    .col-sm-9
+      %ul.list-inline.general-align.mb-25
+        %li
+          = link_to 'Home', home_url  
+        %li
+          %a.nav-link{href: "#"} Shop
+        %li
+          %a.nav-link{href: "#"} Orders
+        %li
+          %a.nav-link{href: "#"} Settings
+    .col-sm-3
+      %p.general-nav-mail support@bookstore.com
+      %p.general-nav-number (555)-555-5555
+      %ul.list-inline.general-align
+        %li
+          %a.nav-link{href: "#"}
+            %i.fa.fa-facebook{'aria-hidden': "true"}
+        %li
+          %a.nav-link{href: "#"}
+            %i.fa.fa-twitter{'aria-hidden': "true"}
+        %li
+          %a.nav-link{href: "#"}
+            %i.fa.fa-google-plus{'aria-hidden': "true"}
+        %li
+          %a.nav-link{href: "#"}
+            %i.fa.fa-instagram{'aria-hidden': "true"}
+  %script{src: "https://use.fontawesome.com/67602d7308.js"}     
+/ __END__
+/ Header
+/ Contains:
+/ Name of the Shop,
+/ Menu:
+/ Home, Shop, My Account (Log in, Sign up), Cart with the counter of items quantity.
+
+/ Footer
+/ Contains:
+/ Menu:
+/ Home, Shop, (Orders, Settings – for logged in user).
+/ Contact information: email, phone.
+/ Social links: Facebook, Twitter, Google+, Instagram.
