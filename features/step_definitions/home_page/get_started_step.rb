@@ -1,11 +1,11 @@
 Given(/^he is at the Home page, Get Started$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit root_url
 end
 
 When(/^he clicks the Get Started button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_on('Get Started')
 end
 
 Then(/^he will be transferred to the Catalog page\.$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content('Catalog')
 end
