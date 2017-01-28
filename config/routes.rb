@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :books
   root 'home#index'
 
   get '/book_page', to: 'home#book_page'
