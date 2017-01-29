@@ -56,4 +56,5 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'devise'
+gem 'simple_form'
 
