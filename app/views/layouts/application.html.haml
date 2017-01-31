@@ -14,7 +14,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand Bookstore
+          %a.navbar-brand{href: "/"} Bookstore
           %a.shop-link.pull-right.visible-xs{href: "#"}
             %span.shop-icon
               %span.shop-quantity 3
@@ -27,7 +27,7 @@
               %span{'aria-hidden': "true"} &times;
             %ul.nav.navbar-nav
               %li
-                %a{href: "#"} Home
+                %a{href: "/"} Home
               %li
                 %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
                 %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
@@ -61,10 +61,8 @@
                     %a{href: "#"} Log out
               %li
                 %a{href: "#"} My account
-    %p.notice
-      = notice 
-    %p.alert
-      = alert
+    - flash.each do |name, msg| 
+      = content_tag :div, msg, class: name    
     %br
     = yield  
     %footer.navbar-inverse

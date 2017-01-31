@@ -1,9 +1,5 @@
 class Book < ApplicationRecord
   has_many :pictures, as: :imageable
-  has_many :publications
-  has_many :authors, through: :publications
-
-  belongs_to :category
-  belongs_to :material
-  belongs_to :dimension
+  has_and_belongs_to_many :authors
+  has_and_belongs_to_many :categories
 end

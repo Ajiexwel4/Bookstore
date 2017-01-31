@@ -8,11 +8,23 @@
 
   .field    
     = f.input :title
+  .field
+    = f.label "Authors:"
+    = f.collection_check_boxes :author_ids, Author.all, :id, :lastname
   .field    
     = f.input :description
   .field
     = f.input :price
   .field
-    = f.association :category
+    = f.label "Category:"
+    = f.collection_check_boxes :category_ids, Category.all, :id, :name
+  .field
+    = f.input :publication_at, collection: 1970..Time.now.year
+  .field
+    = f.input :dimension
+  .field
+    = f.input :material
+  .field
+    = f.input :in_stock
   .actions
     = f.button :submit
