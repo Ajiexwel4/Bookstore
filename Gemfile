@@ -57,4 +57,5 @@ gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'devise'
 gem 'simple_form'
-
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"

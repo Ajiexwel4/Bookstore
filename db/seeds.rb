@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Author.delete_all
-Author.create(firstname: "Vitaly", lastname: "Friedman")
-Author.create(firstname: "Daniel", lastname: "Mall")
-Author.create(firstname: "Bass", lastname: "Jobsen")
-Author.create(firstname: "David", lastname: "Cochran")
-Author.create(firstname: "Ian", lastname: "Whitley")
-Author.create(firstname: "John", lastname: "Horton")
+# Author.delete_all
+# Author.create(firstname: "Vitaly", lastname: "Friedman")
+# Author.create(firstname: "Daniel", lastname: "Mall")
+# Author.create(firstname: "Bass", lastname: "Jobsen")
+# Author.create(firstname: "David", lastname: "Cochran")
+# Author.create(firstname: "Ian", lastname: "Whitley")
+# Author.create(firstname: "John", lastname: "Horton")
 
 Category.delete_all
 Category.create(name: "Mobile development")

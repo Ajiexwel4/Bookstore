@@ -6,6 +6,7 @@
       %th Title
       %th Description
       %th Price      
+      %th Image
       %th
       %th
       %th
@@ -14,8 +15,9 @@
     - @books.each do |book|
       %tr
         %td= book.title
-        %td= book.description
-        %td= book.price        
+        %td= truncate(book.description)
+        %td= book.price   
+        %td= image_tag(book.cover.url.to_s)     
         %td= link_to 'Show', book
         %td= link_to 'Edit', edit_book_path(book)
         %td= link_to 'Destroy', book, :method => :delete, :data => { :confirm => 'Are you sure?' }

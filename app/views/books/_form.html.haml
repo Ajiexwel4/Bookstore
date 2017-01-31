@@ -1,11 +1,10 @@
-= simple_form_for(@book) do |f|
+= simple_form_for @book, html: { multipart: true } do |f|
   - if @book.errors.any?
     #error_explanation
       %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
       %ul
         - @book.errors.full_messages.each do |msg|
           %li= msg
-
   .field    
     = f.input :title
   .field
@@ -16,15 +15,18 @@
   .field
     = f.input :price
   .field
-    = f.label "Category:"
-    = f.collection_check_boxes :category_ids, Category.all, :id, :name
-  .field
-    = f.input :publication_at, collection: 1970..Time.now.year
+    = f.input :publication_at, collection: 1990..Time.now.year
   .field
     = f.input :dimension
   .field
     = f.input :material
   .field
     = f.input :in_stock
+  .field
+    = f.label "Category:"
+    = f.collection_check_boxes :category_ids, Category.all, :id, :name
+  .field
+    = f.label "Cover:"
+    = f.file_field :cover
   .actions
     = f.button :submit
