@@ -6,14 +6,14 @@
     .col-sm-6
       .product-gallery
         .mb-20
-          = image_tag(@book.cover.url)          
+          = image_tag(@book.cover.url) if @book.cover?        
         .images.clearfix
           %a.img-link{href: "#"}
-            = image_tag(@book.cover.url)
+            = image_tag(@book.cover.url) if @book.cover?  
           %a.img-link{href: "#"}
-            = image_tag(@book.cover.url)
+            = image_tag(@book.cover.url) if @book.cover?  
           %a.img-link{href: "#"}
-            = image_tag(@book.cover.url)
+            = image_tag(@book.cover.url) if @book.cover?  
     .col-sm-6
       %h1.mt-res-0 
         = @book.title
@@ -22,7 +22,7 @@
       .row
         .col-xs-12.col-md-4
           %p.h1.in-gold-500.mt-10
-            = number_to_currency(@book.price, unit: "€")
+            = number_to_currency(@book.price, unit: '€')
         .col-xs-5.col-md-3
           .input-group.general-position
             %a.input-link{href: "#"}

@@ -28,5 +28,9 @@
   .field
     = f.label "Cover:"
     = f.file_field :cover
+    - if f.object.cover?
+      = image_tag(f.object.cover.thumb.url)
+      = f.label :remove_cover
+      = f.check_box :remove_cover
   .actions
     = f.button :submit
