@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :books
   root 'home#index'
 
@@ -12,10 +13,10 @@ Rails.application.routes.draw do
   get '/checkout_delivery ', to: 'home#checkout_delivery'
   get '/checkout_payment ', to: 'home#checkout_payment'
   get '/home', to: 'home#home'
-  get '/log_in', to: 'home#log_in'
-  get '/new_password', to: 'home#new_password'
+  # get '/log_in', to: 'home#log_in'
+  # get '/new_password', to: 'home#new_password'
   get '/orders', to: 'home#orders'
-  get '/password', to: 'home#password'
+  # get '/password', to: 'home#password'
   get '/settings', to: 'home#settings'
   get '/ui_kit', to: 'home#ui_kit'
   get '/view_orders', to: 'home#view_orders'

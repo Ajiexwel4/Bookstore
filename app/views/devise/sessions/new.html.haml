@@ -1,0 +1,32 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title Log In
+    %a.general-login-icon
+      %i.fa.fa-facebook-official
+      - if devise_mapping.omniauthable?
+        - resource_class.omniauth_providers.each do |provider|
+          = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) 
+    %p.general-login-text or
+  %form.general-form
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group.mb-30
+        %label.control-label.input-label Enter Email
+        = f.input :email, label: false, required: false, autofocus: true, placeholder: 'Enter Email', id: "email", class: "form-control"
+      .form-group.mb-30
+        %label.control-label.input-label Password
+        = f.input :password, required: false, label: false, placeholder: 'Password', id: "password", class: "form-control"
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "Forgot password?", new_password_path(resource_name), class: "help-block in-gold-500"
+      .form-group.mb-30
+        %label.control-label.input-label Confirm Password
+        = f.input :password, required: false, label: false, placeholder: 'Confirm Password', id: 'confirm', class: 'form-control'         
+      .form-group.checkbox.text-center.mb-30
+        %label.checkbox-label
+          = f.input :remember_me, as: :boolean, class: "checkbox-input" if devise_mapping.rememberable?
+      .text-center      
+        = f.button :submit, "Back to store"
+      %br
+  %p.general-sign-text.text-center
+    Don’t have an Account?
+    %a.in-gold-500
+      = link_to "Sign up", new_registration_path(resource_name)
