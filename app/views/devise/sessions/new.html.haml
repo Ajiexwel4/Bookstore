@@ -7,7 +7,7 @@
         - resource_class.omniauth_providers.each do |provider|
           = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) 
     %p.general-login-text or
-  %form.general-form
+  .general-form
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group.mb-30
         %label.control-label.input-label Enter Email
@@ -26,7 +26,6 @@
       .text-center      
         = f.button :submit, "Back to store"
       %br
-  %p.general-sign-text.text-center
+  %p.general-sign-text.text-center 
     Don’t have an Account?
-    %a.in-gold-500
-      = link_to "Sign up", new_registration_path(resource_name)
+    = link_to "Sign up", new_registration_path(resource_name), class: 'in-gold-500'
