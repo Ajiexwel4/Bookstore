@@ -14,8 +14,11 @@
 # Author.create(firstname: "Ian", lastname: "Whitley")
 # Author.create(firstname: "John", lastname: "Horton")
 
-Category.delete_all
-Category.create(name: "Mobile development")
-Category.create(name: "Photo")
-Category.create(name: "Web design")
-Category.create(name: "Web development")
+# Category.delete_all
+# Category.create(name: "Mobile development")
+# Category.create(name: "Photo")
+# Category.create(name: "Web design")
+# Category.create(name: "Web development")
+
+# AdminUser.delete_all
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
