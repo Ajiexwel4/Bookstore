@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, path_names: { sign_in: 'login', sign_out: 'logout' }
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   resources :books
-  root 'home#index'
+  root 'books#index'
 
   get '/book_page', to: 'home#book_page'
   get '/cart', to: 'home#cart'

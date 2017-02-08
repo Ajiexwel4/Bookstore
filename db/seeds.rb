@@ -20,5 +20,6 @@
 # Category.create(name: "Web design")
 # Category.create(name: "Web development")
 
-# AdminUser.delete_all
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# User.delete_all
+User.find_by_email('admin@example.com').delete
+User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
