@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-  before_action :authenticate_admin_user!
+  before_action :authenticate_user!
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   # GET /books
   # GET /books.json
   def index
+    redirect_to(admin_dashboard_path) && return if current_user.admin?
     @books = Book.all
   end
 

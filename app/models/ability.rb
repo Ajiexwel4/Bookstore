@@ -9,6 +9,7 @@ class Ability
         can :manage, :all
       else
         can :read, :all
+        cannot :read, ActiveAdmin::Page, :name => "Dashboard"
         can :manage, User, id: user.id
       end
     #

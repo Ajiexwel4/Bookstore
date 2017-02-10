@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, path_names: { sign_in: 'login', sign_out: 'logout' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   ActiveAdmin.routes(self)
 
   resources :books
