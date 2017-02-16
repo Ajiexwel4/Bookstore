@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{href: "/"} Bookstore
+      = link_to 'Bookstore', root_path, class: "navbar-brand"
       %a.shop-link.pull-right.visible-xs{href: "#"}
         %span.shop-icon
           %span.shop-quantity 3
@@ -19,7 +19,7 @@
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: "/"} Home
+            = link_to 'Home', root_path
           %li
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
@@ -31,8 +31,7 @@
                 %a.collapse-link{href: "#"} Web design
               %li
                 %a.collapse-link{href: "#"} Web development
-          %li
-            %a{href: "#"} My account
+          = render 'layouts/navigation'
       .hidden-xs
         %ul.nav.navbar-nav
           %li
@@ -51,8 +50,7 @@
               %li.divider{role: "separator"}
               %li
                 %a{href: "#"} Log out
-          %li
-            %a{href: "#"} My account
+          = render 'layouts/navigation'
 / Header
 / Contains:
 / Name of the Shop,

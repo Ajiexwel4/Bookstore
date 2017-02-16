@@ -13,5 +13,4 @@
         %label.control-label.input-label Confirm Password
         = f.input :password_confirmation, label: false, required: true, placeholder: "Confirm Password", id: "confirmPassword", class: "form-control"
         = f.button :submit, "Change", class: "btn btn-default center-block mb-20"
-      %p.general-sign-text.text-center    
-      = link_to "Log in", new_session_path(resource_name), class: 'in-gold-500'
+      %p.general-sign-text.text-center

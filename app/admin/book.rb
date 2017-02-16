@@ -1,17 +1,25 @@
 ActiveAdmin.register Book do
+  permit_params :title, :description, :price, :cover, :publication_at, :dimension, :material,
+                :in_stock, author_ids: [], category_ids: []
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  index do
+    selectable_column
 
+    column :image
+    column :category
+    column :title
+    column :authors
+    column :description
+    column :price
+    actions
+  end
+
+  filter :title
+  filter :authors
+  filter :categories
+  filter :price
+  filter :created_at
+
+  form partial: 'books/form'
 
 end

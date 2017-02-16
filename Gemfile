@@ -63,3 +63,5 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 gem 'flattened_active_admin'
 gem 'jquery-ui-rails', '~> 5.0.5'
 gem 'cancancan'
+gem 'drape', '~> 1.0.0.beta1'
+gem "rectify"
