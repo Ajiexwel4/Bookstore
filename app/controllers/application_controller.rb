@@ -10,6 +10,4 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     redirect_to(admin_dashboard_path) && return if current_user.admin?
   end
-
-
 end

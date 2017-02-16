@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_action :authenticate_admin_user
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 

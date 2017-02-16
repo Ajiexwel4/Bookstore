@@ -14,24 +14,24 @@
       %span.shop-icon
         %span.shop-quantity 3
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
-      .visible-xs
-        %button.close{type: "button", 'aria-label': "Close"}
-          %span{'aria-hidden': "true"} &times;
-        %ul.nav.navbar-nav
-          %li
-            = link_to 'Home', root_path
-          %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
-            %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              %li
-                %a.collapse-link{href: "#"} Mobile development
-              %li
-                %a.collapse-link{href: "#"} Photo
-              %li
-                %a.collapse-link{href: "#"} Web design
-              %li
-                %a.collapse-link{href: "#"} Web development
-          = render 'layouts/navigation'
+      / .visible-xs
+      /   %button.close{type: "button", 'aria-label': "Close"}
+      /     %span{'aria-hidden': "true"} &times;
+      /   %ul.nav.navbar-nav
+      /     %li
+      /       = link_to 'Home', root_path
+      /     %li
+      /       %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
+      /       %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
+      /         %li
+      /           %a.collapse-link{href: "#"} Mobile development
+      /         %li
+      /           %a.collapse-link{href: "#"} Photo
+      /         %li
+      /           %a.collapse-link{href: "#"} Web design
+      /         %li
+      /           %a.collapse-link{href: "#"} Web development
+      /     = render 'layouts/navigation'
       .hidden-xs
         %ul.nav.navbar-nav
           %li

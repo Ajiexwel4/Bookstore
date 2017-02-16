@@ -1,11 +1,11 @@
-Feature: Book page
+@admin
+Feature: Admin books page
   
-  As a guest user or logged in
-  I want to see details about a book
+  Login as admin
+  I want to see admin books page
 
-  Scenario: user can sees details about a book
-    Given The user is logged in or a guest
-    When he wants to see details about a book
-    Then he places cursor on the photo of the book
-    And clicks the View icon,
-    Then he will be transferred to the Book view.
+  Scenario: admin can sees his books page
+    Given The admin is logged in.
+    When he wants to see the list of books, provided in the shop,
+    Then he clicks the Books tab
+    And sees the list of all books with attributes.

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :books
-  root 'books#index'
+  root 'home#index'
 
   get '/book_page', to: 'home#book_page'
   get '/cart', to: 'home#cart'

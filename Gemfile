@@ -46,6 +46,7 @@ group :test do
   gem 'ffaker'
   gem 'launchy'
   gem 'cucumber-rails', :require => false
+  gem 'capybara-screenshot', :group => :test
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
