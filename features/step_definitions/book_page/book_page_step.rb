@@ -11,5 +11,5 @@ Then(/^clicks the View icon,$/) do
 end
 
 Then(/^he will be transferred to the Book view\.$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content('Description')
 end

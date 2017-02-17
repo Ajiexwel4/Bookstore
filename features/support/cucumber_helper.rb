@@ -7,3 +7,4 @@ def login(email, password)
   end
   click_button 'Back to store'
 end
+
