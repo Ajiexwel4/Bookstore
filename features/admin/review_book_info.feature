@@ -1,4 +1,4 @@
-@admin @new
+@admin
 Feature: Admin review full book description
 
   Login as admin

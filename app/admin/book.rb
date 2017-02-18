@@ -1,10 +1,8 @@
 ActiveAdmin.register Book do
-  permit_params :title, :description, :price, :cover, :publication_at, :dimension, :material,
-                :in_stock, author_ids: [], category_ids: []
+  permit_params :title, :description, :price, :cover, :publication_at, :dimension, :material, :in_stock, author_ids: [], category_ids: []
 
   index do
     selectable_column
-
     column :image
     column :category
     column :title
@@ -21,5 +19,4 @@ ActiveAdmin.register Book do
   filter :created_at
 
   form partial: 'books/form'
-
 end

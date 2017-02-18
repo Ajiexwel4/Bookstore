@@ -1,8 +1,11 @@
-Given(/^The admin is logged in\.$/) do
+Before do
   @book = create(:book)
-  admin = create(:admin)
+  @admin = create(:admin)
   visit root_path
-  login(admin.email, admin.password)
+  login(@admin.email, @admin.password)
+end
+
+Given(/^The admin is logged in\.$/) do
 end
 
 When(/^he wants to see the list of books, provided in the shop,$/) do

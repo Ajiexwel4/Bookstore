@@ -1,7 +1,4 @@
 Given(/^The admin is logged in$/) do
-  admin = create(:admin)
-  visit root_path
-  login(admin.email, admin.password)
 end
 
 Given(/^he is at the Books tab\.$/) do

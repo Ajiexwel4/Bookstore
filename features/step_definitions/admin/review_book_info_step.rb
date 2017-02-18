@@ -1,4 +1,3 @@
-Before { @book = create(:book) }
 When(/^The admin wants to see a full description of the book$/) do
   click_on 'View'
 end
