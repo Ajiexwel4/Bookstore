@@ -5,7 +5,7 @@ Feature: Admin deletes some books
   I want to delete some books
 
   Scenario: admin can to delete some books
-    Given The admin is logged in
+    Given The admin is logged in.
     And he is at the Books tab.
     When The admin wants to delete some books,
     And he checks the checkbox against items,

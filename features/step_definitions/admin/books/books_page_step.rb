@@ -5,13 +5,13 @@ Before do
   login(@admin.email, @admin.password)
 end
 
-Given(/^The admin is logged in\.$/) do
+Given(/^The admin is logged in$/) do
 end
 
 When(/^he wants to see the list of books, provided in the shop,$/) do
 end
 
-Then(/^he clicks the Books tab$/) do
+Then(/^he clicks the Books tab\.$/) do
   click_on('Books')
 end
 

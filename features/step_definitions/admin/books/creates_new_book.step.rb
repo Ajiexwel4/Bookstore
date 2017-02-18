@@ -1,4 +1,4 @@
-Given(/^The admin is logged in$/) do
+Given(/^The admin is logged in\.$/) do
 end
 
 Given(/^he is at the Books tab\.$/) do

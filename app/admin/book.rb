@@ -18,5 +18,5 @@ ActiveAdmin.register Book do
   filter :price
   filter :created_at
 
-  form partial: 'books/form'
+  # form partial: 'books/form'
 end

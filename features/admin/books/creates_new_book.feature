@@ -5,7 +5,7 @@ Feature: Admin creates a new book
   I want to create a new book
 
   Scenario: admin can creates a new book
-    Given The admin is logged in
+    Given The admin is logged in.
     And he is at the Books tab.
     When The admin wants to create a new one,
     And he clicks the Create button. 
