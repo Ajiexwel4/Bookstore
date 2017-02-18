@@ -1,5 +1,5 @@
-Before { @author = create(:author) }
 When(/^he wants to see the list of authors, provided in the shop,$/) do
+  @author = create(:author)
 end
 
 Then(/^he clicks the Authors tab\.$/) do

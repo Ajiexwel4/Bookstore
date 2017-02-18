@@ -1,4 +1,4 @@
-@author @new
+@author
 Feature: Create author by admin
   
   Login as admin
