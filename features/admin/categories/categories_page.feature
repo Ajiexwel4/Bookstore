@@ -9,3 +9,4 @@ Feature: Categories page
     When he wants to see the list of categories,
     Then he clicks the Categories tab
     And sees the list of all available categories with attributes.
+    

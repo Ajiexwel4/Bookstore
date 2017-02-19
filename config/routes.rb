@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :orders
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   ActiveAdmin.routes(self)
 
