@@ -1,3 +1,4 @@
+@home
 Feature: Home page
   
   As a guest user

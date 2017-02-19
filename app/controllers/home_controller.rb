@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_admin_user
+  before_action :authenticate_admin_user, except: [:index]
   def index
   end
 

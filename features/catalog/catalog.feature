@@ -1,3 +1,4 @@
+@catalog
 Feature: Catalog page
   
   As a guest user or logged in
