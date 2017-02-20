@@ -3,7 +3,10 @@
 %table
   %thead
     %tr
-      %th State
+      %th Number
+      %th Complated at
+      %th Status
+      %th Total
       %th
       %th
       %th
@@ -11,7 +14,10 @@
   %tbody
     - @orders.each do |order|
       %tr
-        %td= order.state
+        %td= order.number
+        %td= order.complated_at
+        %td= order.status
+        %td= order.total
         %td= link_to 'Show', order
         %td= link_to 'Edit', edit_order_path(order)
         %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }

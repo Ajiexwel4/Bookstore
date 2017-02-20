@@ -1,8 +1,17 @@
 %p#notice= notice
 
 %p
-  %b State:
-  = @order.state
+  %b Number:
+  = @order.number
+%p
+  %b Complated at:
+  = @order.complated_at
+%p
+  %b Status:
+  = @order.status
+%p
+  %b Total:
+  = @order.total
 
 = link_to 'Edit', edit_order_path(@order)
 \|
