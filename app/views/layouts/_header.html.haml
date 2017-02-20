@@ -35,7 +35,7 @@
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: "#"} Home
+            = link_to 'Home', root_path
           %li.dropdown
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
             %ul.dropdown-menu
@@ -47,9 +47,9 @@
                 %a{href: "#"} Web design
               %li
                 %a{href: "#"} Web development
-              %li.divider{role: "separator"}
-              %li
-                %a{href: "#"} Log out
+              / %li.divider{role: "separator"}
+              / %li
+              /   %a{href: "#"} Log out
           = render 'layouts/navigation'
 / Header
 / Contains:

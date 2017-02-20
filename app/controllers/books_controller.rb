@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = BookDecorator.decorate_collection(Book.all)
   end
 
   # GET /books/1

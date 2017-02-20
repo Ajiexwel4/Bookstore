@@ -1,22 +1,9 @@
 class HomeController < ApplicationController
   before_action :authenticate_admin_user, except: [:index]
   def index
-  end
+    @latest_books = BookDecorator.decorate_collection(Book.last(3))
 
-  def book_page; end
-  def cart; end
-  def catalog; end
-  def checkout_address; end
-  def checkout_complete; end
-  def checkout_confirm; end
-  def checkout_delivery; end
-  def checkout_payment; end
-  def home; end
-  def log_in; end
-  def new_password; end
-  def orders; end
-  def password; end
-  def settings; end
-  def ui_kit; end
-  def view_orders; end
+    # need to correct
+    @best_sellers = BookDecorator.decorate_collection(Book.first(4))
+  end
 end

@@ -4,19 +4,19 @@
       .col-sm-9
         %ul.list-inline.general-align.mb-25
           %li
-            %a.nav-link{href: "#"} Home
+            = link_to 'Home', root_path, class: 'nav-link'            
           %li
-            %a.nav-link{href: "#"} Shop
+            = link_to 'Shop', catalog_index_path, class: 'nav-link'            
           = if current_user
             %li
-              %a.nav-link{href: "#"} Orders
+              = link_to 'Orders', orders_path, class: 'nav-link'              
             %li
               %a.nav-link{href: "#"} Settings
       .col-sm-3
         %p.general-nav-mail support@bookstore.com
         %p.general-nav-number (555)-555-5555
         %ul.list-inline.general-align
-          %li
+          %li            
             %a.nav-link{href: "#"}
               %i.fa.fa-facebook{'aria-hidden': "true"}
           %li
@@ -28,9 +28,3 @@
           %li
             %a.nav-link{href: "#"}
               %i.fa.fa-instagram{'aria-hidden': "true"}
-/ Footer
-/ Contains:
-/ Menu:
-/ Home, Shop, (Orders, Settings – for logged in user).
-/ Contact information: email, phone.
-/ Social links: Facebook, Twitter, Google+, Instagram.
