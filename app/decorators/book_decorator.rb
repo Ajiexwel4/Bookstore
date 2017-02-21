@@ -5,7 +5,7 @@ class BookDecorator < Drape::Decorator
     h.image_tag model.cover.thumb.url
   end
 
-  def category
+  def categories
     object.categories.collect(&:name).join(', ')
   end
 
