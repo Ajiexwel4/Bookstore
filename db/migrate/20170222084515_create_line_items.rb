@@ -4,7 +4,6 @@ class CreateLineItems < ActiveRecord::Migration[5.0]
       t.references :book, foreign_key: true
       t.belongs_to :cart, foreign_key: true
       t.integer :quantity, default: 1
-      t.decimal :sub_total, precision: 8, scale: 2
 
       t.timestamps
     end
