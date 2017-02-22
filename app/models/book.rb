@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :categories
+  has_many :line_items
+
+  before_destroy :has_not_ref_with_line_items?
 
   mount_uploader :cover, CoverUploader
 
@@ -16,6 +19,10 @@ class Book < ApplicationRecord
 
   private
   def cover_size_validation
-    errors[:cover] << "should be less than 500KB" if cover.size > 0.5.megabytes
+    errors[:cover] << "should be less than 1024KB" if cover.size > 1.megabytes
+  end
+
+  def has_not_ref_with_line_items?
+    line_items.empty? ? true : false
   end
 end
