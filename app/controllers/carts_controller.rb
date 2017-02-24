@@ -1,6 +1,6 @@
 class CartsController < InheritedResources::Base
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   def index
     @carts = Cart.all
   end
@@ -45,7 +45,7 @@ class CartsController < InheritedResources::Base
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to catalog_index_url }
+      format.html { redirect_to catalog_index_url, notice: 'Cart is empty' }
       format.json { head :no_content }
     end
   end
@@ -58,6 +58,11 @@ class CartsController < InheritedResources::Base
 
     def cart_params
       params.require(:cart).permit() #params.fetch(:cart, {})
+    end
+
+    def invalid_cart
+      logger.error 'Attempt to access invalid cart #{params[:id]}"'
+      redirect_to catalog_index_url, notice: 'Invalid cart'
     end
 end
 

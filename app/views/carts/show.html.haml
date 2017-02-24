@@ -13,8 +13,8 @@
         %th.col-total
           %span.in-grey-600 SubTotal
         %th.col-close
-      %tr
-        - @cart.line_items.each do |item|
+      - @cart.line_items.each do |item|
+        %tr
           %td
             .general-img-wrap-table
               = image_tag(item.book.cover.url, class: 'cart-img-shadow pull-left', alt: "design-book")            
@@ -25,16 +25,17 @@
             %span.font-16.in-gold-500
               = item.book.price
           %td
-            .input-group
-              %a.input-link{href: "#"}
-                %i.fa.fa-minus.line-heaght-40
-              %input.form-control.quantity-input{type: "text"}
-              %a.input-link{href: "#"}
+            .input-group{id: "#{item.id}", quantity: "#{item.quantity}"}
+              .input-link
+                %i.fa.fa-minus.line-heaght-40              
+              %input.form-control.quantity-input{type: "text", value: "#{item.quantity}"}
+              .input-link              
                 %i.fa.fa-plus.line-heaght-40
           %td
-            %span.font-16.in-gold-500 €32.90
+            %span.font-16.in-gold-500
+              = item.total_price
           %td
-            %button.close.general-cart-close{type: "button", 'aria-label': "Close"}
+            = button_to item, method: :delete, class: 'close general-cart-close', type: "button", 'aria-label': "Close" do            
               %span{'aria-hidden': "true"} &times;      
   .general-order-wrap
     .row
@@ -42,9 +43,9 @@
         .input-group.general-input-group
           %label.input-label Enter Your Coupon Code
           %input.form-control.mb-30{type: "text", placeholder: "Enter Your Coupon Code "}
-          %div
-            %button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block Apply Coupon
-            %button.btn.btn-primary.mb-15.res-block Update cart
+          %div            
+            %button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block 
+            = button_to 'Update cart', cart_path, method: :put, class: 'btn btn-primary mb-15 res-block' 
       .col-sm-8
         .res-mr-200.text-center.general-text-right
           %p.in-gold-500.font-18 Order Summary
@@ -53,7 +54,8 @@
               %td
                 %p.font-16 Subtotal:
               %td
-                %p.font-16 €117.69
+                %p.font-16 
+                  = @cart.total_price
             %tr
               %td
                 %p.font-16 Coupon:
@@ -63,6 +65,7 @@
               %td
                 %strong.font-18 Order Total:
               %td
-                %strong.font-18 €117.69
+                %strong.font-18
+                  = @cart.total_price
           %button.btn.btn-default.mb-20.visible-xs-inline-block Checkout
   %button.btn.btn-default.mb-20.hidden-xs.center-block Checkout
