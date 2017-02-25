@@ -1,19 +1,6 @@
 class LineItemsController < InheritedResources::Base
-  # include CurrentCart
   before_action :set_cart, only: [:create]
-
   before_action :set_line_item, only: [:show, :edit]
-
-  def index
-    @line_items = LineItem.all
-  end
-
-  def show
-  end
-
-  def new
-    @line_item = LineItem.new
-  end
 
   def create
     book = Book.find(params[:book_id])
@@ -26,9 +13,6 @@ class LineItemsController < InheritedResources::Base
         format.html { render :new }
       end
     end
-  end
-
-  def edit
   end
 
   def update

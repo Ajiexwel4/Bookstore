@@ -1,3 +1,4 @@
+@book
 Feature: Home page
   
   As a guest user or logged in

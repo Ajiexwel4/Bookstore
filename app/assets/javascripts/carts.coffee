@@ -4,10 +4,10 @@ set_quantity = (selector)->
     line_item_id = $(this).closest('.input-group').attr('id')
     quantity = line_item.attr('quantity')
     
-    if quantity > 1
-      quantity = parseInt(quantity) + 1 if selector == '.fa-plus'
-      quantity = parseInt(quantity) - 1 if selector == '.fa-minus'
+    quantity = parseInt(quantity) + 1 if selector == '.fa-plus'
+    quantity = parseInt(quantity) - 1 if selector == '.fa-minus'
       
+    if quantity > 0
       $.ajax({
         url: '/line_items/' + line_item_id,
         type: "PUT",
