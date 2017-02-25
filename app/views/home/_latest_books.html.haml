@@ -20,7 +20,7 @@
                 %p.lead.small 
                   = book.authors
                 .general-align
-                  = button_tag 'Buy Now', class: "#{button_class_if(book)}"       
+                  = button_to 'Buy Now', line_items_path(book_id: book),  class: "#{button_class_if(book)}"       
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only Previous

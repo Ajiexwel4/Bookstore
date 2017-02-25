@@ -4,6 +4,6 @@ class HomeController < ApplicationController
     @latest_books = BookDecorator.decorate_collection(Book.last(3))
 
     # need to correct
-    @best_sellers = BookDecorator.decorate_collection(Book.first(4))
+    @bestsellers = BookDecorator.decorate_collection(Book.first(4))
   end
 end
