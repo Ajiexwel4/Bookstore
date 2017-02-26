@@ -1,9 +1,14 @@
 class HomeController < ApplicationController
-  before_action :authenticate_admin_user, except: [:index]
-  def index
-    @latest_books = BookDecorator.decorate_collection(Book.last(3))
+  include SortingFromParams
 
-    # need to correct
-    @bestsellers = BookDecorator.decorate_collection(Book.first(4))
+  def index
+    @books = mobile_dev_books || sorting_from_params
+    @latest_books = BookDecorator.decorate_collection(@books.latest_books)
+    @bestsellers = BookDecorator.decorate_collection(@books.bestsellers)
   end
+
+  private
+    def mobile_dev_books
+      Category.where(name: 'Mobile development').first.books if !params[:category_id]
+    end
 end

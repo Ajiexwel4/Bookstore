@@ -11,18 +11,21 @@ class Book < ApplicationRecord
   validate :cover_size_validation
 
   default_scope { limit(12) }
+
+  scope :latest_books, -> { last(3) }
+  scope :bestsellers, -> { first(4) }
+
   scope :newest, ->{ order(:created_at) }
-  # scope :popular, ->{} # need to implement
+  scope :popular, ->{ last(3) }
   scope :cheaper, ->{ order(:price) }
   scope :expensive, ->{ order(price: :desc) }
 
-
   private
-  def cover_size_validation
-    errors[:cover] << "should be less than 1024KB" if cover.size > 1.megabytes
-  end
+    def cover_size_validation
+      errors[:cover] << "should be less than 1024KB" if cover.size > 1.megabytes
+    end
 
-  def has_not_ref_with_line_items?
-    line_items.empty? ? true : false
-  end
+    def has_not_ref_with_line_items?
+      line_items.empty? ? true : false
+    end
 end
