@@ -1,4 +1,4 @@
-@home
+@home @first
 Feature: Home page
 	
 	As a guest user

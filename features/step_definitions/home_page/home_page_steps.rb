@@ -1,3 +1,5 @@
+Before { create_list(:book, 5) }
+
 Given(/^The user is logged in or a guest$/) do
 end
 

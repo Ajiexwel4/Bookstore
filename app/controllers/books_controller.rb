@@ -1,5 +1,6 @@
 class BooksController < InheritedResources::Base
   load_and_authorize_resource
+  decorates_assigned :book
 
   private
     def book_params

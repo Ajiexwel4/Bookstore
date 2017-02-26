@@ -11,9 +11,10 @@
  * It is generally better to create a new file per style scope.
  */
  
-.input-link {
+.input-link, .more {
   cursor: pointer;
 }
+
  
 @import 'style'
 
