@@ -11,7 +11,7 @@ $(document).on "turbolinks:load", ->
   set_quantity_for_book('.increment')
   set_quantity_for_book('.decrement')
 
-  $('.more').click ->
-    description = $('p.lead.small.line-height-2').text("<%= @book.description %>")
-    console.log(description)
-    
+  $('.more').on 'click', ->
+    $('p.lead.small.line-height-2').text('#{@book.description}')
+    $(this).one 'click', ->
+       $('p.lead.small.line-height-2').toggle()

@@ -27,11 +27,11 @@
           .input-group.general-position
             .input-link
               %i.fa.fa-minus.line-height-40.decrement            
-            %input.form-control.quantity-input{type: "text", value: 1}
+            %input.form-control.quantity-input{type: "text", name: "line_item[quantity]", value: 1}
             .input-link
               %i.fa.fa-plus.line-height-40.increment
         .col-xs-7.col-md-5
-          = button_to 'Add to Cart', line_items_path(book_id: book), class: 'btn btn-default pull-right general-position'           
+          = button_to 'Add to Cart', line_items_path(book_id: book), class: 'btn btn-default pull-right general-position', type: 'submit'          
       .general-info-wrap.divider-lg
         %p Description
         %p.lead.small.line-height-2
@@ -86,3 +86,14 @@
             %i.fa.fa-star.rate-star
             %i.fa.fa-star.rate-star.rate-empty
           %p If ‘Get a better job’ had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.
+:javascript
+  $(document).ready(function() {    
+      old_desc = $('p.lead.small.line-height-2').text();
+    $('.more').on('click', function(){
+      new_desc = $('p.lead.small.line-height-2').text('#{@book.description}');
+       $('p.lead.small.line-height-2').toggle(new_desc);
+    }).on('click', function(){
+      $('p.lead.small.line-height-2').toggle(old_desc);
+    });   
+  });
+  
