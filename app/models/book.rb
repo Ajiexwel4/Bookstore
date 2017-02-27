@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :categories
   has_many :line_items
+  has_many :reviews
 
   before_destroy :has_not_ref_with_line_items?
 
