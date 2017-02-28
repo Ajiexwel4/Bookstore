@@ -1,18 +1,28 @@
-- @book.reviews.each do |review|
+- @book.reviews.decorate.each do |review|
   - if !review.approval
     .general-message-wrap.divider-lg
-      .clearfix      
+      .clearfix
+        - if review.user.avatar
+          = image_tag(review.user_avatar, class: 'img-circle logo-size inlide-block pull-left')
+        - else 
+          %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
+            = review.no_avatar
         .ml-70
           %div
-            .general-message-date.hidden-xs= review.created_at.strftime('%d/%m/%y')
-            .align-center
-              .general-message-name
-              - if review.approval
-                .general-message-verified Verified user
+            .general-message-date.hidden-xs
+              = review.created_at
+            .max-240
+              .general-message-verified 
+                = review.status
+            .general-message-name
+              = review.user_name              
           .mb-15
             - review.grade.times do
               %i.fa.fa-star.rate-star
+            - review.empty_star.times do
+              %i.fa.fa-star.rate-star.rate-empty
           %p.in-grey-600
             = review.title
           - if review.comment
             %p= review.comment
+.general-message-wrap.divider-lg
