@@ -1,10 +1,10 @@
 - @book.reviews.each do |review|
-  - if review.approval
+  - if !review.approval
     .general-message-wrap.divider-lg
       .clearfix      
         .ml-70
           %div
-            .general-message-date.hidden-xs= review.created_at
+            .general-message-date.hidden-xs= review.created_at.strftime('%d/%m/%y')
             .align-center
               .general-message-name
               - if review.approval
