@@ -1,0 +1,11 @@
+= simple_form_for [@book, @book.reviews.build], html: { id: 'review_form' } do |field|
+  .form-group
+    = field.input :title
+  .form-group
+    = field.input :grade, label: false do
+      .rate-fields
+        = field.input :grade, collection: (1..5), as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false      
+  .form-group
+    = field.input :comment, as: :text
+  .text-center.general-text-align
+    = field.button :submit, 'Post', class: "btn"

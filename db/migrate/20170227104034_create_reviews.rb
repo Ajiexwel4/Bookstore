@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.text :comment
       t.integer :grade
       t.string :state
-      t.boolean :approval
+      t.boolean :approval, default: false
 
       t.timestamps
     end

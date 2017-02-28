@@ -1,0 +1,18 @@
+- @book.reviews.each do |review|
+  - if review.approval
+    .general-message-wrap.divider-lg
+      .clearfix      
+        .ml-70
+          %div
+            .general-message-date.hidden-xs= review.created_at
+            .align-center
+              .general-message-name
+              - if review.approval
+                .general-message-verified Verified user
+          .mb-15
+            - review.grade.times do
+              %i.fa.fa-star.rate-star
+          %p.in-grey-600
+            = review.title
+          - if review.comment
+            %p= review.comment

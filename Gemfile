@@ -65,4 +65,5 @@ gem 'active_skin'
 gem 'jquery-ui-rails', '~> 5.0.5'
 gem 'cancancan'
 gem 'drape', '~> 1.0.0.beta1'
-gem "rectify"
+gem 'rectify'
+gem 'aasm'

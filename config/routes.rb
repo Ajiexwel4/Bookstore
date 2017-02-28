@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   get 'catalog/index', as: 'catalog'
   root 'home#index'
 
-  resources :books
+  resources :books do
+    resources :reviews
+  end
+
   resources :orders
   resources :carts
   resources :line_items
+  resources :reviews
 end
