@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   include CurrentCart
   before_action :set_cart
 
+  rescue_from CanCan::AccessDenied do |exception|
+    access_denied(exception)
+  end
+
   protected
 
     def access_denied(exception)

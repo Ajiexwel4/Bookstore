@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  authorize_resource
+
   def create
     @book = Book.find(params[:book_id])
     @review = @book.reviews.create(review_params)
