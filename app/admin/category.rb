@@ -7,5 +7,4 @@ ActiveAdmin.register Category do
     actions
   end
 
-  filter :name
 end

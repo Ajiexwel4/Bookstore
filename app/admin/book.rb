@@ -13,10 +13,8 @@ ActiveAdmin.register Book do
   end
 
   filter :title
-  filter :authors
-  filter :categories
+  filter :authors, as: :select, collection: ->{ Author.all }
+  filter :categories, as: :select, collection: ->{ Category.all }
   filter :price
   filter :created_at
-
-  # form partial: 'books/form'
 end

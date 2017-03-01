@@ -1,5 +1,5 @@
 - @book.reviews.decorate.each do |review|
-  - if !review.approval
+  - if review.approved?
     .general-message-wrap.divider-lg
       .clearfix
         - if review.user.avatar
@@ -14,8 +14,8 @@
             .max-240
               .general-message-verified 
                 = review.status
-            .general-message-name
-              = review.user_name              
+              .general-message-name
+                = review.user_name              
           .mb-15
             - review.grade.times do
               %i.fa.fa-star.rate-star

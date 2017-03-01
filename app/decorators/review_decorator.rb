@@ -24,6 +24,6 @@ class ReviewDecorator < Drape::Decorator
   end
 
   def status
-    'Verified Reviewer' if object.approval
+    'Verified Reviewer' if object.approved?
   end
 end
