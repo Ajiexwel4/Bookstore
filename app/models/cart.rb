@@ -14,4 +14,13 @@ class Cart < ApplicationRecord
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
+
+  def total_price_with_discount(coupon)
+    if coupon && coupon.active
+      coupon.update!(active: false)
+      self.total_price-coupon.discount
+    else
+      self.total_price
+    end
+  end
 end

@@ -13,6 +13,10 @@ class CartsController < InheritedResources::Base
     end
   end
 
+  def show
+    @coupon = Coupon.where(code: params[:coupon_code]).first
+  end
+
   private
 
     def set_cart
