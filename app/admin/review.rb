@@ -17,7 +17,6 @@ ActiveAdmin.register Review do
     actions
   end
 
-
   filter :title
   filter :status
   filter :grade
@@ -43,13 +42,13 @@ ActiveAdmin.register Review do
 
   member_action :approve, method: :put do
     review = Review.find(params[:id])
-    review.update(status: :approved)
-    redirect_to admin_reviews_path(review)
+    review.approved!
+    redirect_to admin_review_path(review)
   end
 
   member_action :reject, method: :put do
     review = Review.find(params[:id])
-    review.update(status: :rejected)
-    redirect_to admin_reviews_path(review)
+    review.rejected!
+    redirect_to admin_review_path(review)
   end
 end
