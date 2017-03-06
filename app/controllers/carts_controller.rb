@@ -1,17 +1,6 @@
-class CartsController < InheritedResources::Base
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+class CartsController < ApplicationController
+  before_action :set_cart
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
-
-  respond_to :html, :json
-
-  def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
-    respond_to do |format|
-      format.html { redirect_to catalog_index_url, notice: 'Cart is empty' }
-      format.json { head :no_content }
-    end
-  end
 
   def show
     @coupon = Coupon.where(code: params[:coupon_code]).first

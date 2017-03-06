@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -43,12 +43,12 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'ffaker'
   gem 'launchy'
   gem 'cucumber-rails', :require => false
   gem 'capybara-screenshot', :group => :test
 end
 
+gem 'ffaker'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'haml'

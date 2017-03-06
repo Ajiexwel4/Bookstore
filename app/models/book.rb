@@ -11,10 +11,9 @@ class Book < ApplicationRecord
   validates_processing_of :cover
   validate :cover_size_validation
 
-  default_scope { limit(12) }
-
-  scope :latest_books, -> { last(3) }
-  scope :bestsellers, -> { first(4) }
+  scope :catalog, ->{ limit(12) }
+  scope :latest_books, ->{ last(3) }
+  scope :bestsellers, ->{ first(4) }
 
   scope :newest, ->{ order(:created_at) }
   scope :popular, ->{ last(3) }
