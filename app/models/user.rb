@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :reviews
+  has_one :picture, as: :imageable
+
+  mount_uploader :avatar, ImageUploader
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -1,5 +1,7 @@
 Category.all.each { |category| category.books.delete_all }
 Author.all.each { |author| author.books.delete_all }
+Book.all.each { |book| book.line_items.delete_all }
+LineItem.delete_all
 Author.delete_all
 Book.delete_all
 
@@ -18,6 +20,7 @@ Book.delete_all
     book.dimension = 'H:6.4" x W: 0.9" x D: 5.0"'
     book.material = FFaker::Lorem.words(4)
     book.in_stock = rand(0..99)
+    # book.cover = book.pictures.create(file: 'app/assets/images/1.jpg')
     book.authors = [Author.last, Author.first]
     book.categories = [Category.find(rand(1..4)), Category.find(rand(1..4))] 
   end
@@ -27,6 +30,7 @@ User.find_or_create_by(email: 'test@test.ua') do |user|
   user.password = 'password'
   user.firstname = FFaker::Name.first_name
   user.lastname = FFaker::Name.last_name
+  # user.avatar = user.create_picture(file: 'app/assets/images/C06035.jpg')
 end
 
 User.find_or_create_by(email: 'admin@example.com') do |user|
@@ -34,6 +38,7 @@ User.find_or_create_by(email: 'admin@example.com') do |user|
   user.firstname = FFaker::Name.first_name
   user.lastname = FFaker::Name.last_name
   user.admin = true
+  user.avatar = user.create_picture(file: 'app/assets/images/C06035.jpg')
 end
 
 Coupon.find_or_create_by(code: 123452){ |coupon| coupon.discount = 2 }

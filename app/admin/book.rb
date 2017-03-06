@@ -3,7 +3,7 @@ ActiveAdmin.register Book do
 
   index do
     selectable_column
-    column :image
+    column :cover
     column :category
     column :title
     column :authors

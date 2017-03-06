@@ -3,10 +3,11 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :line_items
   has_many :reviews
+  has_many :pictures, as: :imageable
 
   before_destroy :has_not_ref_with_line_items?
 
-  mount_uploader :cover, CoverUploader
+  mount_uploader :cover, ImageUploader
 
   validates_processing_of :cover
   validate :cover_size_validation
