@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :orders
   resources :carts, only: [:show]
   resources :line_items
-  resources :reviews
+  resources :reviews  
+  resources :checkouts
 end
