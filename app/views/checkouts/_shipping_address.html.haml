@@ -1,34 +1,32 @@
 .col-md-5.col-md-offset-1.mb-60
   .visible-xs.visible-sm
     %h3.general-subtitle Shipping Address
-  .form-group.has-error
-    %label.control-label.input-label{for: "firstName"} First Name
-    %input#firstName.form-control{name:"fname", type: "text", placeholder: "First Name"}
-    %span.help-block Please enter your first name
-  .form-group
-    %label.control-label.input-label{for: "lastName"} Last Name
-    %input#lastName.form-control{name:"lname", type: "text", placeholder: "Last Name"}
-  .form-group
-    %label.control-label.input-label{for: "address"} Address
-    %input#address.form-control{name: "address", type: "text", placeholder: "Address"}
-  .form-group
-    %label.control-label.input-label{for: "city"} City
-    %input#city.form-control{name: "city", type: "text", placeholder: "City"}
-  .form-group
-    %label.control-label.input-label{for: "zip"} Zip
-    %input#zip.form-control{name: "zip", type: "text", placeholder: "Zip"}
-  .form-group
-    %label.control-label.input-label{for: "сountry"} Country
-    %select#country.form-control{name: "country", placeholder: "Select a country"}
-      %option London
-      %option London
-      %option London
-  .form-group
-    %label.control-label.input-label{for: "phone"} Phone
-    %input#phone.form-control{name: "phone", type: "tel", placeholder: "Example +355 66 123 4567"}
-  .form-group.checkbox
-    %label.checkbox-label
-      %input.checkbox-input{type: "checkbox", hidden: "true"}
-      %span.checkbox-icon
-        %i.fa.fa-check
-      %span.checkbox-text Use Billing Adress
+  = simple_form_for @shipping_address, url: checkout_path, id: 'form2', method: :put do |field|
+    .form-group
+      = field.label :firstname, 'First Name', class: 'control-label input-label'
+      = field.input :firstname, label: false, placeholder: 'First Name', id: 'firstName', class: 'form-control'  
+    .form-group
+      = field.label :lastname, 'Last Name', class: 'control-label input-label'
+      = field.input :lastname, label: false, placeholder: 'Last Name', id: 'lastName', class: 'form-control'      
+    .form-group
+      = field.label :address, 'Address', class: 'control-label input-label'
+      = field.input :address, label: false, placeholder: 'Address', id: 'address', class: 'form-control'
+    .form-group
+      = field.label :city, 'City', class: 'control-label input-label'
+      = field.input :city, label: false, placeholder: 'City', id: 'city', class: 'form-control'
+    .form-group
+      = field.label :zip, 'Zip', class: 'control-label input-label'
+      = field.input :zip, label: false, placeholder: 'Zip', id: 'zip', class: 'form-control'
+    .form-group
+      = field.label :country, 'Country', class: 'control-label input-label'
+      = field.input :country, label: false, include_blank: 'Select a country', collection: ['London', 'Ukraine'], id: 'country', class: 'form-control'     
+    .form-group
+      = field.label :phone, 'Phone', class: 'control-label input-label'
+      = field.input :phone, label: false, placeholder: "Example +355 66 123 4567", id: 'phone', type: "tel", class: 'form-control'
+      = field.submit 'Save shipping address', hidden: true
+    .form-group.checkbox
+      %label.checkbox-label
+        %input.checkbox-input{type: "checkbox", name: 'as_billing', hidden: "true"}
+        %span.checkbox-icon
+          %i.fa.fa-check
+        %span.checkbox-text Use Billing Adress

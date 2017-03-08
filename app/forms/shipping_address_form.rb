@@ -1,0 +1,2 @@
+class ShippingAddressForm < BillingAddressForm
+end

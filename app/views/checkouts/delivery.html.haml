@@ -37,20 +37,7 @@
   .general-text-align
     %p.in-gold-500.font-18 Order Summary
     %table.general-summary-table
-      %tr
-        %td
-          %p.font-16 Subtotal:
-        %td
-          %p.font-16 €117.69
-      %tr
-        %td
-          %p.font-16 Coupon:
-        %td
-          %p.font-16 €0.00
-      %tr
-        %td
-          %strong.font-18 Order Total:
-        %td
-          %strong.font-18 €117.69
+      = render 'carts/order_summary'
   .text-center
-    %button.btn.btn-default.mb-20 Save and Continue
+    = button_to 'Save and Continue', checkout_path(id: :payment), method: :get,  class: 'btn btn-primary center-block mb-20'    
+

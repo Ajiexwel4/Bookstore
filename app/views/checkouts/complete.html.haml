@@ -110,4 +110,4 @@
         %td
           %strong.font-18 €117.69
   .text-center
-    %button.btn.btn-default.mb-20 Back to Store
+    = button_to 'Back to Store', catalog_path(id: :payment), method: :get,  class: 'btn btn-default mb-20'

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :address do
+  factory :billing_address do
     
   end
 end

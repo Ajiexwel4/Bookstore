@@ -1,4 +1,4 @@
-class AddressForm < Rectify::Form
+class BillingAddressForm < Rectify::Form
   ADDRESS_ATTR = [:firstname, :lastname, :address, :city, :zip, :country, :phone].freeze
 
   ADDRESS_ATTR.each do |attr_name|
