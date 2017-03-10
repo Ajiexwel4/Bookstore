@@ -20,7 +20,7 @@
       = field.input :zip, label: false, placeholder: 'Zip', id: 'zip', class: 'form-control'
     .form-group
       = field.label :country, 'Country', class: 'control-label input-label'
-      = field.input :country, label: false, include_blank: 'Select a country', collection: ['London', 'Ukraine'], id: 'country', class: 'form-control'      
+      = field.input :country, label: false, include_blank: 'Select a country', collection: @country, id: 'country', class: 'form-control'      
     .form-group
       = field.label :phone, 'Phone', class: 'control-label input-label'
       = field.input :phone, label: false, placeholder: "Example +355 66 123 4567", id: 'phone', type: "tel", class: 'form-control'

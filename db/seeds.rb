@@ -44,3 +44,18 @@ end
 Coupon.find_or_create_by(code: 123452){ |coupon| coupon.discount = 2 }
 Coupon.find_or_create_by(code: 123453){ |coupon| coupon.discount = 3 }
 Coupon.find_or_create_by(code: 123454){ |coupon| coupon.discount = 4 }
+
+['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
+'Bahamas', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Bolivia', 'Botswana', 'Brazil', 'Bulgaria', 
+'Cambodia', 'Cameroon', 'Canada', 'Chad', 'Chile', 'China', 'Colombia', 'Congo', 'Cuba', 'Cyprus', 'Czech', 
+'Denmark', 'Dominica', 'Ecuador', 'Egypt', 'Estonia', 'Fiji', 'Finland', 'France', 
+'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Guatemala', 'Guinea', 'Honduras', 'Hungary',
+'Iceland', 'India', 'Indonesia', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Kazakstan', 'Kenya', 'Kuwait', 'Kyrgyzstan', 
+'Latvia',  'Liberia', 'Liechtenstein', 'Luxembourg', 'Macedoni',  'Malaysia', 'Malta', 'Mauritania', 'Mexico', 'Micronesi', 'Moldov',
+'Monaco', 'Mongolia', 'Morocco', 'Mozambique', 'Nepal', 'Netherlands', 'Nicaragua', 'Norway', 'Oman', 
+'Pakistan', 'Panama', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn', 'Poland', 'Portugal', 'Qatar', 'Reunion', 'Romania', 'Russia', 
+'Senegal', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'Spain', 'Sudan', 'Suriname',  'Swaziland', 'Sweden', 'Switzerland', 
+'Taiwa',  'Tajikistan', 'Thailand', 'Togo', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'UAE', 'UK', 'USA', 'Uruguay', 'Uzbekistan', 
+'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'].each { |country| Country.find_or_create_by(name: country) }
+
+

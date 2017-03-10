@@ -8,6 +8,8 @@ class CheckoutsController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
+    @country = Country.all
+    
     case step
     when :address
       @billing_address = BillingAddressForm.new
