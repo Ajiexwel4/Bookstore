@@ -14,10 +14,8 @@ class CheckoutsController < ApplicationController
     when :address
       @billing_address = BillingAddressForm.new
       @shipping_address = ShippingAddressForm.new
-    # when :delivery
-    #   @delivery = DeliveryForm.new
-    # when :payment
-    #   @payment = PaymentForm.new
+    when :payment
+      @credit_card = CreditCardForm.new
     # when :confirm 
     #   @confirm = ConfirmForm.new
     # when :complete

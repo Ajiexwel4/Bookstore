@@ -1,28 +1,29 @@
 %main.container.mb-res-50
   = render 'steps'
   %h3.general-subtitle Credit Card
-  %form.max-600.mb-80
-    .form-group.has-error
-      %label.control-label.input-label{for: "cardNumber"} Card Number
-      %input#cardNumber.form-control{type: "number", name: "cardnumber", placeholder: "Card Number"}
-      %span.help-block Please enter a valid credit card number
-    .row
-      .col-sm-6
-        .form-group
-          %label.control-label.input-label{for: "cardName"} Name on Card
-          %input#cardName.form-control{type: "text", name: "ccname", placeholder: "Name on Card"}
-      .col-sm-3
-        .form-group
-          %label.control-label.input-label{for: "firstName"} MM / YY
-          %input#firstName.form-control{name: "exp-date", type: "text", placeholder: "MM / YY"}
-      .col-sm-3
-        .form-group.relative
-          %label.control-label.input-label{for: "firstName"} CVV
-          %input#firstName.form-control{name: "cvc", type: "number", placeholder: "CVV"}
-          %i.fa.fa-question-circle.general-form-help
+  .row
+    .col-sm-6
+      = simple_form_for @credit_card, url: checkout_path, class: 'max-600.mb-80' do |field|
+        = field.label :number, 'Card Number', class: 'control-label input-label'
+        = field.input :number, as: :integer, label: false, id: 'cardNumber', class: 'form-control', placeholder: 'Card Number'
+        .row
+          .col-sm-6
+            .form-group
+              = field.label :name, 'Name on Card', class: 'control-label input-label'
+              = field.input :name, label: false, placeholder: 'Name on Card', id: 'cardName', class: 'form-control'          
+          .col-sm-3
+            .form-group
+              = field.label :period, 'MM / YY', class: 'control-label input-label'
+              = field.input :period, label: false, placeholder: 'MM / YY', id: 'firstName', class: 'form-control'
+          .col-sm-3
+            .form-group.relative
+              = field.label :cvv, 'CVV', class: 'control-label input-label'
+              = field.input :cvv, as: :integer, label: false, placeholder: 'CVV', id: 'firstName', class: 'form-control'
+              = link_to '', title: '3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front', 'data-toggle': 'tooltip' do
+                %i.fa.fa-question-circle.general-form-help
   .general-text-align
     %p.in-gold-500.font-18 Order Summary
     %table.general-summary-table
       = render 'carts/order_summary'
   .text-center
-    = button_to 'Save and Continue', checkout_path(id: :confirm), method: :get,  class: 'btn btn-primary center-block mb-20'
+    = button_to 'Save and Continue', checkout_path(id: :confirm), method: :get,  class: 'btn btn-default center-block mb-20'

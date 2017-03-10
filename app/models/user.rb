@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :reviews
+  has_many :credit_cards, dependent: :destroy
   has_one :picture, as: :imageable
 
   mount_uploader :avatar, ImageUploader
