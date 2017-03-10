@@ -12,32 +12,25 @@
           %th
             %span.in-grey-600 Price
       %tbody
-        %tr
-          %td
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-          %td
-            %span 3 to 7 days
-          %td
-            %span.font-16.in-gold-500 €28.50
-        %tr
-          %td
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-          %td
-            %span 3 to 7 days
-          %td
-            %span.font-16.in-gold-500 €28.50
+        - Delivery.decorate.each do |delivery|
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label                  
+                  %input.radio-input{type: "radio", name: "delivery_id", value: "#{delivery.id}", hidden: "true"}
+                  %span.radio-icon
+                  %span.radio-text
+                    = delivery.title
+            %td
+              %span
+                = delivery.days
+            %td
+              %span.font-16.in-gold-500
+                = delivery.price
   .general-text-align
     %p.in-gold-500.font-18 Order Summary
     %table.general-summary-table
       = render 'carts/order_summary'
   .text-center
-    = button_to 'Save and Continue', checkout_path(id: :payment), method: :get,  class: 'btn btn-primary center-block mb-20'    
+    = button_to 'Save and Continue', checkout_path(id: :payment), method: :patch,  class: 'btn btn-primary center-block mb-20'    
 

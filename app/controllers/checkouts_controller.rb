@@ -31,14 +31,14 @@ class CheckoutsController < ApplicationController
     when :address
       @billing_address = BillingAddressForm.from_params(params)
       @shipping_address = ShippingAddressForm.from_params(params)
-    when :delivery
-      @delivery = DeliveryForm.from_params(params)
-    when :payment
-      @payment = PaymentForm.from_params(params)
-    when :confirm 
-      @confirm = ConfirmForm.from_params(params)
-    when :complete
-      @order = OrderForm.from_params(params)
+    # when :delivery
+    #   @delivery = DeliveryForm.from_params(params)
+    # when :payment
+    #   @payment = PaymentForm.from_params(params)
+    # when :confirm 
+    #   @confirm = ConfirmForm.from_params(params)
+    # when :complete
+    #   @order = OrderForm.from_params(params)
     end
     render_wizard    
   end

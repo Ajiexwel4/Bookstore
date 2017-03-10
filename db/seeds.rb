@@ -58,4 +58,14 @@ Coupon.find_or_create_by(code: 123454){ |coupon| coupon.discount = 4 }
 'Taiwa',  'Tajikistan', 'Thailand', 'Togo', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'UAE', 'UK', 'USA', 'Uruguay', 'Uzbekistan', 
 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'].each { |country| Country.find_or_create_by(name: country) }
 
+Delivery.find_or_create_by(title: 'Delivery Next Day!') do |delivery|
+  delivery.days = '3 to 7 days'
+  delivery.price = 10
+end
+
+Delivery.find_or_create_by(title: 'Express!') do |delivery|
+  delivery.days = '1 to 3 days'
+  delivery.price = 30
+end
+
 
