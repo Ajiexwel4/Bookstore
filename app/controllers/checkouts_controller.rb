@@ -3,6 +3,7 @@ class CheckoutsController < ApplicationController
   include CurrentCart
 
   before_action :set_cart
+  before_action :checkout_login
 
   steps :address, :delivery, :payment, :confirm, :complete
 
@@ -39,4 +40,13 @@ class CheckoutsController < ApplicationController
     end
     render_wizard    
   end
+
+  private
+
+    def checkout_login
+      if !current_user
+        authenticate_user!
+        redirect_to(checkouts_path(id: :address))
+      end      
+    end
 end
