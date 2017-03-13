@@ -1,6 +1,6 @@
 %main.container
-  = render 'steps'  
-  %form.res-mb-100
+  = render 'steps'
+  = simple_form_for @cart, url: checkout_path, method: :put, class: 'res-mb-100' do |field|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
@@ -9,8 +9,8 @@
         .col-md-5.col-md-offset-1
           %h3.general-subtitle Shipping Address
     .row
-      = render 'billing_address'
-      = render 'shipping_address'
+      = render 'billing_address', field: field
+      = render 'shipping_address', field: field
     .general-text-align.mb-60
-      = render 'order_summary'      
-      = button_to 'Save and Continue', checkout_path(id: :delivery), method: :get,  class: 'btn btn-default center-block mb-20 button_submit'    
+      = render 'order_summary'    
+      = field.submit "Save and Continue", class: "btn btn-default center-block mb-20"

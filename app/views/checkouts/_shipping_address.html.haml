@@ -1,29 +1,28 @@
 .col-md-5.col-md-offset-1.mb-60
   .visible-xs.visible-sm
     %h3.general-subtitle Shipping Address
-  = simple_form_for @shipping_address, url: checkout_path, id: 'form2', method: :put do |field|
+  = field.simple_fields_for :shipping, @shipping_address do |shipping_field|
     .form-group
-      = field.label :firstname, 'First Name', class: 'control-label input-label'
-      = field.input :firstname, label: false, placeholder: 'First Name', id: 'firstName', class: 'form-control'  
+      = shipping_field.label :firstname, 'First Name', class: 'control-label input-label'
+      = shipping_field.input :firstname, label: false, placeholder: 'First Name', id: 'firstName', class: 'form-control'  
     .form-group
-      = field.label :lastname, 'Last Name', class: 'control-label input-label'
-      = field.input :lastname, label: false, placeholder: 'Last Name', id: 'lastName', class: 'form-control'      
+      = shipping_field.label :lastname, 'Last Name', class: 'control-label input-label'
+      = shipping_field.input :lastname, label: false, placeholder: 'Last Name', id: 'lastName', class: 'form-control'      
     .form-group
-      = field.label :address, 'Address', class: 'control-label input-label'
-      = field.input :address, label: false, placeholder: 'Address', id: 'address', class: 'form-control'
+      = shipping_field.label :address, 'Address', class: 'control-label input-label'
+      = shipping_field.input :address, label: false, placeholder: 'Address', id: 'address', class: 'form-control'
     .form-group
-      = field.label :city, 'City', class: 'control-label input-label'
-      = field.input :city, label: false, placeholder: 'City', id: 'city', class: 'form-control'
+      = shipping_field.label :city, 'City', class: 'control-label input-label'
+      = shipping_field.input :city, label: false, placeholder: 'City', id: 'city', class: 'form-control'
     .form-group
-      = field.label :zip, 'Zip', class: 'control-label input-label'
-      = field.input :zip, label: false, placeholder: 'Zip', id: 'zip', class: 'form-control'
+      = shipping_field.label :zip, 'Zip', class: 'control-label input-label'
+      = shipping_field.input :zip, label: false, placeholder: 'Zip', id: 'zip', class: 'form-control'
     .form-group
-      = field.label :country, 'Country', class: 'control-label input-label'
-      = field.input :country, label: false, include_blank: 'Select a country', collection: @country, id: 'country', class: 'form-control'     
+      = shipping_field.label :country, 'Country', class: 'control-label input-label'
+      = shipping_field.input :country, as: :select, label: false, include_blank: 'Select a country', collection: @countries, id: 'country', class: 'form-control'     
     .form-group
-      = field.label :phone, 'Phone', class: 'control-label input-label'
-      = field.input :phone, label: false, placeholder: "Example +355 66 123 4567", id: 'phone', type: "tel", class: 'form-control'
-      = field.submit 'Save shipping address', hidden: true
+      = shipping_field.label :phone, 'Phone', class: 'control-label input-label'
+      = shipping_field.input :phone, label: false, placeholder: "Example +355 66 123 4567", id: 'phone', type: "tel", class: 'form-control'
     .form-group.checkbox
       %label.checkbox-label
         %input.checkbox-input{type: "checkbox", name: 'as_billing', hidden: "true"}

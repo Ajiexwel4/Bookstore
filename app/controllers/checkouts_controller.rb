@@ -8,18 +8,12 @@ class CheckoutsController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
-    @country = Country.all
+    @countries = Country.all.pluck(:name)
     
     case step
     when :address
       @billing_address = BillingAddressForm.new
       @shipping_address = ShippingAddressForm.new
-    when :payment
-      @credit_card = CreditCardForm.new
-    # when :confirm 
-    #   @confirm = ConfirmForm.new
-    # when :complete
-    #   @order = OrderForm.new
     end
     render_wizard
   end
@@ -28,15 +22,7 @@ class CheckoutsController < ApplicationController
     case step
     when :address
       @billing_address = BillingAddressForm.from_params(params)
-      @shipping_address = ShippingAddressForm.from_params(params)
-    # when :delivery
-    #   @delivery = DeliveryForm.from_params(params)
-    # when :payment
-    #   @payment = PaymentForm.from_params(params)
-    # when :confirm 
-    #   @confirm = ConfirmForm.from_params(params)
-    # when :complete
-    #   @order = OrderForm.from_params(params)
+      @shipping_address = ShippingAddressForm.from_params(params)   
     end
     render_wizard    
   end
