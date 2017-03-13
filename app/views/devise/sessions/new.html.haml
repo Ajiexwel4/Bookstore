@@ -17,13 +17,17 @@
           = link_to "Forgot password?", new_password_path(resource_name), class: "help-block in-gold-500"
       .form-group.mb-30
         %label.control-label.input-label Confirm Password
-        = f.input :password, required: false, label: false, placeholder: 'Confirm Password', id: 'confirm', class: 'form-control'         
-      .form-group.checkbox.text-center.mb-30
-        %label.checkbox-label
-          = f.input :remember_me, as: :boolean, class: "checkbox-input" if devise_mapping.rememberable?
-      .text-center      
-        = f.button :submit, "Back to store"
-      %br
+        = f.input :password, required: false, label: false, placeholder: 'Confirm Password', id: 'confirm', class: 'form-control'       
+      - if devise_mapping.rememberable?
+        .form-group.checkbox.text-center.mb-30
+          %label.checkbox-label
+            = f.check_box :remember_me, class: "checkbox-input", hidden: true
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text Remember me
+        .text-center      
+          = f.button :submit, "Back to store"
+        %br
   %p.general-sign-text.text-center 
     Don’t have an Account?
     = link_to "Sign up", new_registration_path(resource_name), class: 'in-gold-500'
