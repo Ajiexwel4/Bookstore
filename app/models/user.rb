@@ -3,10 +3,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :orders
-  has_many :reviews
+  has_many :orders, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
   has_one :picture, as: :imageable
+  has_one :billing_address, dependent: :destroy
+  has_one :shipping_address, dependent: :destroy
 
   mount_uploader :avatar, ImageUploader
 
