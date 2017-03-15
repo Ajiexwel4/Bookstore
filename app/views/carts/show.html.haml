@@ -13,30 +13,7 @@
         %th.col-total
           %span.in-grey-600 SubTotal
         %th.col-close
-      - @cart.line_items.each do |item|
-        %tr
-          %td
-            .general-img-wrap-table
-              = image_tag(item.book.cover.url || 'no image', class: 'cart-img-shadow pull-left')        
-          %td
-            %p.title
-              = item.book.title
-          %td
-            %span.font-16.in-gold-500
-              = item.book.decorate.price
-          %td
-            .input-group{id: "#{item.id}", quantity: "#{item.quantity}"}
-              .input-link
-                %i.fa.fa-minus.line-heaght-40              
-              %input.form-control.quantity-input{type: "text", value: "#{item.quantity}"}
-              .input-link              
-                %i.fa.fa-plus.line-heaght-40
-          %td
-            %span.font-16.in-gold-500
-              = number_to_currency(item.total_price, unit: '€')
-          %td
-            = button_to item, method: :delete, class: 'close general-cart-close', type: "button", 'aria-label': "Close" do            
-              %span{'aria-hidden': "true"} &times;      
+      = render 'line_items_list'                
   - if @cart.line_items.any?
     .general-order-wrap
       .row

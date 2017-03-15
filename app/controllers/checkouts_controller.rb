@@ -2,9 +2,9 @@ class CheckoutsController < ApplicationController
   include Wicked::Wizard
   include CurrentCart
 
-  before_action :checkout_login, :countries
-  before_action :set_cart
-  before_action :current_order
+  decorates_assigned :order
+
+  before_action :checkout_login, :countries, :set_cart, :current_order
   
   steps :address, :delivery, :payment, :confirm, :complete
 
@@ -13,7 +13,6 @@ class CheckoutsController < ApplicationController
   end
 
   def update    
-    @steps = steps
     case step
     when :address
       order_addresses  
@@ -21,6 +20,7 @@ class CheckoutsController < ApplicationController
       @order.delivery = Delivery.find(params[:delivery_id])    
     when :payment
       @order.credit_card = CreditCard.create(credit_card_params)
+    when :confirm
 
     end
 
