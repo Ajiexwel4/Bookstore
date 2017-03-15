@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   has_one :billing_address, dependent: :destroy
   has_one :shipping_address, dependent: :destroy
   has_one :delivery
+  has_one :credit_card
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|

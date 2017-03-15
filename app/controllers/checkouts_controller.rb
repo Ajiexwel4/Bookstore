@@ -20,6 +20,7 @@ class CheckoutsController < ApplicationController
     when :delivery
       @order.delivery = Delivery.find(params[:delivery_id])    
     when :payment
+      @order.credit_card = CreditCard.create(credit_card_params)
 
     end
 
@@ -54,6 +55,10 @@ class CheckoutsController < ApplicationController
 
     def shipping_address_params
       params.require(:order).require(:shipping).permit(:firstname, :lastname, :address_name, :city, :zip, :country, :phone)
+    end
+
+    def credit_card_params
+      params.require(:credit_card).permit(:number, :name, :period, :cvv)
     end
 
     def current_order
