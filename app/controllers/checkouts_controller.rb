@@ -2,17 +2,19 @@ class CheckoutsController < ApplicationController
   include Wicked::Wizard
   include CurrentCart
 
-  before_action :set_cart, :set_current_order
+  before_action :set_cart
   before_action :checkout_login
 
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
+    @order = Order.new
     @countries = Country.all    
     render_wizard 
   end
 
   def update
+    @order = Order.new
     @steps = steps
     case step
     when :address
@@ -30,28 +32,24 @@ class CheckoutsController < ApplicationController
       end      
     end
 
-    def set_current_order
-      @order = Order.new
-      @order.user = current_user
-      @order.add_line_items_from_cart(@cart)
-      @order
-    end
-
     def set_order_addresses
-      @billing_address = BillingAddressForm.from_params(params[:cart][:billing])
-      @billing_address.save
+      @order.create_billing_address(billing_address_params)
       shipping_as_billing
-      @order.billing_address = @billing_address
-      @order.shipping_address = @shipping_address
     end
 
     def shipping_as_billing
       if params[:as_billing]
-        @shipping_address = ShippingAddressForm.from_params(params[:cart][:billing])
-        @shipping_address.save
+        @order.create_shipping_address(billing_address_params)
       else
-        @shipping_address = ShippingAddressForm.from_params(params[:cart][:shipping])   
-        @shipping_address.save 
+        @order.create_shipping_address(shipping_address_params)
       end
+    end
+
+    def billing_address_params
+      params.require(:order).require(:billing).permit(:firstname, :lastname, :address, :city, :zip, :country, :phone)
+    end
+
+    def shipping_address_params
+      params.require(:order).require(:shipping).permit(:firstname, :lastname, :address_name, :city, :zip, :country, :phone)
     end
 end

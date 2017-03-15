@@ -1,6 +1,6 @@
 %main.container
   = render 'steps'
-  = simple_form_for @cart, url: checkout_path, method: :put, class: 'res-mb-100' do |field|
+  = simple_form_for @order, url: checkout_path, method: :put, class: 'res-mb-100' do |field|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
