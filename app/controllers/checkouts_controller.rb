@@ -2,24 +2,27 @@ class CheckoutsController < ApplicationController
   include Wicked::Wizard
   include CurrentCart
 
+  before_action :checkout_login, :countries
   before_action :set_cart
-  before_action :checkout_login
-
+  before_action :current_order
+  
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
-    @order = Order.new
-    @countries = Country.all    
     render_wizard 
   end
 
-  def update
-    @order = Order.new
+  def update    
     @steps = steps
     case step
     when :address
-      set_order_addresses      
+      order_addresses  
+    when :delivery
+      @order.delivery = Delivery.find(params[:delivery_id])    
+    when :payment
+
     end
+
     render_wizard @order   
   end
 
@@ -32,7 +35,7 @@ class CheckoutsController < ApplicationController
       end      
     end
 
-    def set_order_addresses
+    def order_addresses
       @order.create_billing_address(billing_address_params)
       shipping_as_billing
     end
@@ -51,5 +54,13 @@ class CheckoutsController < ApplicationController
 
     def shipping_address_params
       params.require(:order).require(:shipping).permit(:firstname, :lastname, :address_name, :city, :zip, :country, :phone)
+    end
+
+    def current_order
+      @order = Order.where(id: @cart.id).empty? ? Order.new(id: @cart.id) : Order.find(@cart.id)
+    end
+
+    def countries
+      @countries = Country.all
     end
 end

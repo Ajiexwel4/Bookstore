@@ -4,6 +4,11 @@ Book.all.each { |book| book.line_items.delete_all }
 LineItem.delete_all
 Author.delete_all
 Book.delete_all
+BillingAddress.delete_all
+ShippingAddress.delete_all
+Delivery.delete_all
+Order.delete_all
+
 
 ['Mobile development', 'Photo', 'Web design', 'Web development'].each { |name| Category.find_or_create_by(name: name) }
 
