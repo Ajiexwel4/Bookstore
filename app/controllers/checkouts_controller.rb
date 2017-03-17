@@ -1,6 +1,5 @@
 class CheckoutsController < ApplicationController
   include Wicked::Wizard
-  include CurrentCart
 
   decorates_assigned :order
 
@@ -9,19 +8,26 @@ class CheckoutsController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
-    render_wizard 
+    @order.user = current_user
+    @order.add_line_items_from_cart(@cart)
+    @order.number = 'R' + @order.id.to_s  
+    render_wizard
   end
 
   def update    
     case step
     when :address
-      order_addresses  
+      order_addresses
     when :delivery
       @order.delivery = Delivery.find(params[:delivery_id])    
     when :payment
       @order.credit_card = CreditCard.create(credit_card_params)
     when :confirm
-
+      # @order.confirm      
+    when :complete
+      @order.complated_at = Time.now.strftime("%B %d, %Y")     
+      @order.save
+      Cart.destroy!(@cart)
     end
 
     render_wizard @order   

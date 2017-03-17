@@ -5,6 +5,7 @@ class LineItemsController < InheritedResources::Base
   def create
     book = Book.find(params[:book_id])
     @line_item = @cart.add_book(book)
+    @line_item.quantity = params[:quantity] if params[:quantity]
 
     respond_to do |format|
       if @line_item.save

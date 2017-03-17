@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_one :picture, as: :imageable
   has_one :billing_address, dependent: :destroy
   has_one :shipping_address, dependent: :destroy
+  has_one :cart
+
+  validates :firstname, :lastname, length: { maximum: 50 }
+  validates :email, length: { maximum: 63 }, presence: true, uniqueness: true 
 
   mount_uploader :avatar, ImageUploader
 

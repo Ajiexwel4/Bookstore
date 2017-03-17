@@ -1,22 +1,12 @@
 .row.mb-20
   .col-sm-3
     %h3.general-subtitle Shipping Address
-    %p.general-address
-      = order.customer_name_by_address_type('shipping')
-      = link_to "edit", wizard_path(:address), class: 'general-edit'
-      %br
-      = order.address_by_type('shipping')
-      %br
-      = order.city_by_address_type('shipping')
-      %br
-      = order.country_by_address_type('shipping')
-      %br
-      = order.phone_by_address_type('shipping')
+    = render 'shipping_address_info'
   .col-sm-3
     %h3.general-subtitle Billing Address
     %p.general-address
       = order.customer_name_by_address_type('billing')
-      = link_to "edit", wizard_path(:address)
+      = link_to "edit", wizard_path(:address), class: 'general-edit'
       %br
       = order.address_by_type('billing')
       %br
@@ -32,6 +22,8 @@
       = link_to "edit", wizard_path(:delivery), class: 'general-edit'
       %br
       = order.delivery_days
+      %br
+      = order.delivery_price
   .col-sm-3
     %h3.general-subtitle Payment Information
     %p.general-address

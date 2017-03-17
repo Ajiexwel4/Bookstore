@@ -13,7 +13,7 @@
         %th.col-total
           %span.in-grey-600 SubTotal
         %th.col-close
-      = render 'line_items_list'                
+      = render 'line_items_list', object: @cart               
   - if @cart.line_items.any?
     .general-order-wrap
       .row

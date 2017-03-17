@@ -12,5 +12,7 @@
       = render 'billing_address', field: field
       = render 'shipping_address', field: field
     .general-text-align.mb-60
-      = render 'order_summary'    
+      %p.in-gold-500.font-18 Order Summary
+      %table.general-summary-table
+        = render 'summary'    
       = field.submit "Save and Continue", class: "btn btn-default center-block mb-20"

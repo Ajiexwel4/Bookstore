@@ -1,9 +1,9 @@
 ActiveAdmin.register Book do
   permit_params :title, :description, :price, :cover, :publication_at, :dimension, :material, :in_stock, author_ids: [], category_ids: []
-
+  
   index do
     selectable_column
-    column :cover
+    column :cover { |book| image_tag book.cover_url(:small) unless book.cover.blank? }
     column :category
     column :title
     column :authors

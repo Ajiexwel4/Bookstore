@@ -15,10 +15,10 @@
           %th
             %span.in-grey-600 Total
       %tbody
-        = render 'carts/line_items_list'
+        = render 'carts/line_items_list', object: @order
   .text-center.general-text-right
     %p.in-gold-500.font-18 Order Summary
     %table.general-summary-table.general-summary-table-right.general-text-right
-      = render 'carts/order_summary'
+      = render 'summary'
   .text-center
     = button_to 'Place Order', checkout_path(id: :complete), method: :get,  class: 'btn btn-default center-block mb-20'

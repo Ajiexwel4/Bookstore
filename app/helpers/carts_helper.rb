@@ -17,10 +17,14 @@ module CartsHelper
   end
 
   def total_price_for_order
-    number_to_currency(@cart.total_price_with_discount(@coupon), unit: '€')
+    number_to_currency(summary_cart_price, unit: '€')
   end
 
   def total_price_for_line_items
     number_to_currency(item.total_price, unit: '€')
+  end
+
+  def summary_cart_price
+    @cart.total_price_with_discount(@coupon)
   end
 end

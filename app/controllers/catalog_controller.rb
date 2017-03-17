@@ -6,6 +6,6 @@ class CatalogController < ApplicationController
 
   def index
     @categories = Category.all
-    @books = sorting_from_params(SORTING)
+    @books = sorting_from_params(SORTING).page params[:page]
   end
 end

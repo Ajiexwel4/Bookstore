@@ -14,7 +14,7 @@ class BookDecorator < Drape::Decorator
   end
 
   def description
-    h.truncate object.description, length: 100
+    h.truncate object.description, length: 360
   end
 
   def price

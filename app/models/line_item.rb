@@ -5,6 +5,8 @@ class LineItem < ApplicationRecord
 
   default_scope { order(:id) }
 
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
   def total_price
     book.price * quantity
   end

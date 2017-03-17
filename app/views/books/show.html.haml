@@ -8,8 +8,12 @@
         .mb-20
           = image_tag(book.cover.url) if book.cover?        
         .images.clearfix
+          - if book.pictures.any?
+            = book.pictures.each do |image|
+              %a.img-link{href: "#"}
+                = image_tag(image)
           %a.img-link{href: "#"}
-            = image_tag(book.cover.url) if book.cover?  
+            = image_tag(book.cover.url) if book.cover?           
           %a.img-link{href: "#"}
             = image_tag(book.cover.url) if book.cover?  
           %a.img-link{href: "#"}
@@ -23,15 +27,17 @@
         .col-xs-12.col-md-4
           %p.h1.in-gold-500.mt-10
             = book.price
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            .input-link
-              %i.fa.fa-minus.line-height-40.decrement            
-            %input.form-control.quantity-input{type: "text", name: "line_item[quantity]", value: 1}
-            .input-link
-              %i.fa.fa-plus.line-height-40.increment
-        .col-xs-7.col-md-5
-          = button_to 'Add to Cart', line_items_path(book_id: book), class: 'btn btn-default pull-right general-position', type: 'submit'          
+        = form_tag line_items_path(book_id: book), method: :post do
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              .input-link
+                %i.fa.fa-minus.line-height-40.decrement            
+              = text_field_tag 'quantity', 1, class: 'form-control quantity-input'
+              .input-link
+                %i.fa.fa-plus.line-height-40.increment
+          .col-xs-7.col-md-5
+            - if !@book.in_stock.zero?
+              = submit_tag 'Add to Cart', class: "btn btn-default pull-right general-position", name: nil          
       .general-info-wrap.divider-lg
         %p Description
         %p.lead.small.line-height-2

@@ -29,7 +29,7 @@
               = category.books.count   
   .mb-120
     .row
-      - @books.catalog.decorate.each do |book|
+      - @books.decorate.each do |book|
         .col-xs-6.col-sm-3
           .general-thumb-wrap
             .thumbnail.general-thumbnail
@@ -49,4 +49,4 @@
             %p.lead.small
               = book.authors
     .text-center
-      %button.btn.btn-primary View More
+      = link_to_next_page @books, 'View More', class: 'btn btn-primary'

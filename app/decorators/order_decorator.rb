@@ -30,12 +30,16 @@ class OrderDecorator < Drape::Decorator
   end
 
   def card_number
-    '** ** ** ' + object.credit_card.number.to_s.last(4)
+    '**** **** **** ' + object.credit_card.number.to_s.last(4)
   end
 
   def period_of_cart
     mm, yy = object.credit_card.period.split('/')
     mm + '/' + '20' +yy    
+  end
+
+  def delivery_price
+    h.number_to_currency object.delivery.price, unit: '€'
   end
 
 end

@@ -7,6 +7,7 @@ Book.delete_all
 BillingAddress.delete_all
 ShippingAddress.delete_all
 Delivery.delete_all
+CreditCard.delete_all
 Order.delete_all
 
 
