@@ -1,6 +1,6 @@
 %main.container.general-main-wrap
   = render 'steps'
-  = render 'order_info'
+  = render 'order_info', edit: true
   .hidden-xs.divider-lg.pt-20
     %table.table.table-hover
       %thead
@@ -21,4 +21,4 @@
     %table.general-summary-table.general-summary-table-right.general-text-right
       = render 'summary'
   .text-center
-    = button_to 'Place Order', checkout_path(id: :complete), method: :get,  class: 'btn btn-default center-block mb-20'
+    = button_to 'Place Order', checkout_path(id: :complete), method: :get, class: 'btn btn-default center-block mb-20'

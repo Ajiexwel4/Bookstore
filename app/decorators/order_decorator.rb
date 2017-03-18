@@ -42,4 +42,7 @@ class OrderDecorator < Drape::Decorator
     h.number_to_currency object.delivery.price, unit: '€'
   end
 
+  def price
+     h.number_to_currency object.total, unit: '€'
+  end
 end

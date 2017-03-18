@@ -6,7 +6,17 @@
       = "An order confirmation has been sent to #{current_user.email}"
   .row.mb-20
     .col-sm-6
-      = render 'shipping_address_info'
+      %p.general-address
+        = order.customer_name_by_address_type('shipping')
+        = link_to "edit", wizard_path(:address), class: 'general-edit'
+        %br
+        = order.address_by_type('shipping')
+        %br
+        = order.city_by_address_type('shipping')
+        %br
+        = order.country_by_address_type('shipping')
+        %br
+        = order.phone_by_address_type('shipping')
     .col-sm-6.hidden-xs.text-right
       %p.general-order-number.mb-0
         = "Order ##{@order.number}"

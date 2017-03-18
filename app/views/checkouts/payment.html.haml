@@ -5,7 +5,7 @@
     .row
       .col-sm-6
         = field.label :number, 'Card Number', class: 'control-label input-label'
-        = field.input :number, as: :integer, label: false, id: 'cardNumber', class: 'form-control', placeholder: 'Card Number'
+        = field.input :number, label: false, id: 'cardNumber', class: 'form-control', placeholder: 'Card Number'
         .row
           .col-sm-6
             .form-group
@@ -18,8 +18,8 @@
           .col-sm-3
             .form-group.relative
               = field.label :cvv, 'CVV', class: 'control-label input-label'
-              = field.input :cvv, as: :integer, label: false, placeholder: 'CVV', id: 'firstName', class: 'form-control'
-              = link_to '', title: '3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front', 'data-toggle': 'tooltip' do
+              = field.input :cvv, label: false, placeholder: 'CVV', id: 'firstName', class: 'form-control'
+              = link_to '', title: '3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front', 'data-toggle': 'tooltip', 'data-placement': "down" do
                 %i.fa.fa-question-circle.general-form-help
     .general-text-align
       %p.in-gold-500.font-18 Order Summary

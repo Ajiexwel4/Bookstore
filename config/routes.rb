@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :orders
+  resources :orders, only: [:index, :show]
   resources :carts, only: [:show]
   resources :line_items
   resources :reviews  

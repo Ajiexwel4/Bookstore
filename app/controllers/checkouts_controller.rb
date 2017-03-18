@@ -10,7 +10,9 @@ class CheckoutsController < ApplicationController
   def show
     @order.user = current_user
     @order.add_line_items_from_cart(@cart)
-    @order.number = 'R' + @order.id.to_s  
+    @order.number = 'R' + @order.id.to_s
+    @order.total = @order.total_price
+    @order.save!  
     render_wizard
   end
 
@@ -19,14 +21,16 @@ class CheckoutsController < ApplicationController
     when :address
       order_addresses
     when :delivery
-      @order.delivery = Delivery.find(params[:delivery_id])    
+      @order.delivery = Delivery.find(params[:delivery_id])
+      @order.save!   
     when :payment
       @order.credit_card = CreditCard.create(credit_card_params)
+      @order.save! 
     when :confirm
       # @order.confirm      
     when :complete
       @order.complated_at = Time.now.strftime("%B %d, %Y")     
-      @order.save
+      @order.save!
       Cart.destroy!(@cart)
     end
 

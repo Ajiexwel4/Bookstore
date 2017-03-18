@@ -1,18 +1,42 @@
-%p#notice= notice
-
-%p
-  %b Number:
-  = @order.number
-%p
-  %b Complated at:
-  = @order.complated_at
-%p
-  %b Status:
-  = @order.status
-%p
-  %b Total:
-  = @order.total
-
-= link_to 'Edit', edit_order_path(@order)
-\|
-= link_to 'Back', orders_path
+%main.container.general-main-wrap
+  %h1.general-title-margin
+    = "Order " + @order.number
+  .row.mb-20
+    = render partial: "checkouts/order_info", locals: { edit: false } 
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600 Book
+          %th.col-method
+          %th
+            %span.in-grey-600 Price
+          %th
+            %span.in-grey-600 Quantity
+          %th
+            %span.in-grey-600 Total
+      %tbody
+        = render 'carts/line_items_list', object: @order
+  .text-center.general-text-right
+    %p.in-gold-500.font-18 Order Summary
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16 Item Total:
+        %td
+          %p.font-16 
+            = order.price
+      - if @order.delivery      
+        %tr
+          %td
+            %p.font-16 Shipping:
+          %td
+            %p.font-16 
+              = order.delivery_price
+      %tr
+        %td
+          %strong.font-17 Order Total: 
+        %td
+          %strong.font-18
+            = order.total_price
