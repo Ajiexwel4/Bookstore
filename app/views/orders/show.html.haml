@@ -33,10 +33,11 @@
             %p.font-16 Shipping:
           %td
             %p.font-16 
-              = order.delivery_price
+              = @order.delivery_price
       %tr
         %td
           %strong.font-17 Order Total: 
         %td
           %strong.font-18
-            = order.total_price
+            = @order.price_with_delivery
+    = button_to 'Place Order', checkout_path(id: :complete), method: :get, class: 'btn btn-default center-block mb-20' if @order.in_progress?

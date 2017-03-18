@@ -1,8 +1,11 @@
-class OrdersController < InheritedResources::Base
+class OrdersController < ApplicationController
+  include SortingFromParams
+  before_action :set_cart
+  
   decorates_assigned :order
   
   def index
-    @orders = Order.where(user_id: current_user).decorate
+    @orders = sorting_from_params('Order', Order::SORTING).where(user_id: current_user).decorate
   end
 
   def show

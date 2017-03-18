@@ -1,4 +1,4 @@
-class LineItemsController < InheritedResources::Base
+class LineItemsController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit]
 

@@ -8,11 +8,10 @@ class CheckoutsController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complete
 
   def show
-    @order.user = current_user
-    @order.add_line_items_from_cart(@cart)
-    @order.number = 'R' + @order.id.to_s
-    @order.total = @order.total_price
-    @order.save!  
+    starting_order
+    if step == :complete
+      order_complete
+    end    
     render_wizard
   end
 
@@ -21,19 +20,10 @@ class CheckoutsController < ApplicationController
     when :address
       order_addresses
     when :delivery
-      @order.delivery = Delivery.find(params[:delivery_id])
-      @order.save!   
+      @order.delivery = Delivery.find(params[:delivery_id])   
     when :payment
       @order.credit_card = CreditCard.create(credit_card_params)
-      @order.save! 
-    when :confirm
-      # @order.confirm      
-    when :complete
-      @order.complated_at = Time.now.strftime("%B %d, %Y")     
-      @order.save!
-      Cart.destroy!(@cart)
     end
-
     render_wizard @order   
   end
 
@@ -77,5 +67,19 @@ class CheckoutsController < ApplicationController
 
     def countries
       @countries = Country.all
+    end
+
+    def starting_order
+      @order.user = current_user
+      @order.add_line_items_from_cart(@cart)
+      @order.number = 'R' + @order.id.to_s
+      @order.total = @order.total_price
+    end
+
+    def order_complete
+      @order.accept  
+      @order.complated_at = Time.now.strftime("%B %d, %Y")
+      @order.save!
+      Cart.destroy(@cart)
     end
 end

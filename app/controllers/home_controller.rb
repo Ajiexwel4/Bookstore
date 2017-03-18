@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :set_cart
 
   def index
-    @books = mobile_dev_books || sorting_from_params
+    @books = mobile_dev_books || sorting_from_params('Book')
     @latest_books = BookDecorator.decorate_collection(@books.latest_books)
     @bestsellers = BookDecorator.decorate_collection(@books.bestsellers)
   end

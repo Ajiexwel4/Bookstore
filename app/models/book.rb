@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  SORTING = ['newest', 'popular', 'cheaper', 'expensive', 'by_title'].freeze
+  
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :categories
   has_many :line_items
@@ -18,9 +20,9 @@ class Book < ApplicationRecord
 
   scope :latest_books, ->{ last(3) }
   scope :bestsellers, ->{ first(4) }
-
+  scope :by_title, ->{ order(:title) }
   scope :newest, ->{ order(:created_at) }
-  scope :popular, ->{ last(3) }
+  scope :popular, ->{ order(created_at: :desc) }
   scope :cheaper, ->{ order(:price) }
   scope :expensive, ->{ order(price: :desc) }
 
