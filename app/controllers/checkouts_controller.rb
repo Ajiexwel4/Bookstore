@@ -3,7 +3,7 @@ class CheckoutsController < ApplicationController
 
   decorates_assigned :order
 
-  before_action :checkout_login, :set_cart, :current_order
+  before_action :checkout_login, :current_order
   
   steps :address, :delivery, :payment, :confirm, :complete
 

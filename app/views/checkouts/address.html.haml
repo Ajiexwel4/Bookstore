@@ -13,14 +13,14 @@
         .visible-xs.visible-sm
           %h3.general-subtitle Billing Address
           %p.general-info-text all fields are required
-          = field.simple_fields_for :billing, @billing_address do |billing_field|
-            = render 'billing_address'
+        = field.simple_fields_for :billing, @billing_address do |field|
+          = render 'billing_address', billing_field: field
       .col-md-5.col-md-offset-1.mb-60
         .visible-xs.visible-sm
           %h3.general-subtitle Shipping Address
         .shipping
-          = field.simple_fields_for :shipping, @shipping_address do |shipping_field|
-            = render 'shipping_address'
+          = field.simple_fields_for :shipping, @shipping_address do |field|
+            = render 'shipping_address', shipping_field: field
             .form-group.checkbox
               %label.checkbox-label
                 %input.checkbox-input{type: "checkbox", name: 'as_billing', hidden: "true"}

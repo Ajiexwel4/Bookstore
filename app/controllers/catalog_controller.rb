@@ -1,7 +1,5 @@
 class CatalogController < ApplicationController
   include SortingFromParams
-  
-  before_action :set_cart
 
   def index
     @categories = Category.all

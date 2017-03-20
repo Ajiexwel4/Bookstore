@@ -1,24 +1,7 @@
-# README
+# Bookstore
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## https://safe-tor-82704.herokuapp.com/
 
-Things you may want to cover:
+##admin_email: admin@example.com, user_email: test@test.us,  passwords: passwor
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##coupons: 123452, 123453, 123454 - 2,3,4 discounts

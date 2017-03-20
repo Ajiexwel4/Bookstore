@@ -20,3 +20,4 @@
 /db/schema.rb
 /public/uploads/
 /config/initializers/constants.rb
+.env

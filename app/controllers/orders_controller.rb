@@ -1,7 +1,5 @@
 class OrdersController < ApplicationController
   include SortingFromParams
-  before_action :set_cart
-  
   decorates_assigned :order
   
   def index

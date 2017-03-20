@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   include SortingFromParams
-  before_action :set_cart
 
   def index
     @books = mobile_dev_books || sorting_from_params('Book')

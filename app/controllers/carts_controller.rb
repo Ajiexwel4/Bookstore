@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  before_action :set_cart
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   def show
