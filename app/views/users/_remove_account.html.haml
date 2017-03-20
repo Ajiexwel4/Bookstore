@@ -1,0 +1,9 @@
+%form
+  .general-settings-btn
+    = button_to 'Please Remove My Account', user_registration_path(current_user), disabled: true, method: :delete, class: 'btn btn-default mb-20', id: 'remove'
+  .form-group.checkbox.general-settings-checkbox
+    %label.checkbox-label
+      %input.checkbox-input#check{type: "checkbox", hidden: "true"}
+      %span.checkbox-icon
+        %i.fa.fa-check
+      %span.checkbox-text I understand that all data will be lost

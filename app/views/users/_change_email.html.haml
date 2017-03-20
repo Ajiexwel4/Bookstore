@@ -1,0 +1,7 @@
+= simple_form_for @user, url: { action: "update_email" }, method: :patch, class: 'general-form-md' do |field|
+  = field.error_notification
+  .form-group.mb-35
+    %label.control-label.input-label{for: "email"} Enter Email
+    = field.input :email, label: false, placeholder: "Enter your email", id:'email', autocomplete: "off", class: 'form-control'
+  .general-text-align
+    = field.button :submit, "Save", class: 'btn btn-default mb-35'

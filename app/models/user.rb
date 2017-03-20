@@ -3,13 +3,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :orders, dependent: :destroy
+  has_many :orders, dependent: :delete_all
   has_many :reviews, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
-  has_one :picture, as: :imageable
+  has_one :picture, as: :imageable, dependent: :destroy
   has_one :billing_address, dependent: :destroy
   has_one :shipping_address, dependent: :destroy
-  has_one :cart
+  has_one :cart, dependent: :destroy
 
   validates :firstname, :lastname, length: { maximum: 50 }
   validates :email, length: { maximum: 63 }, presence: true, uniqueness: true 

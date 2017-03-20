@@ -3,7 +3,7 @@ class CheckoutsController < ApplicationController
 
   decorates_assigned :order
 
-  before_action :checkout_login, :countries, :set_cart, :current_order
+  before_action :checkout_login, :set_cart, :current_order
   
   steps :address, :delivery, :payment, :confirm, :complete
 
@@ -63,10 +63,6 @@ class CheckoutsController < ApplicationController
 
     def current_order
       @order = Order.where(id: @cart.id).empty? ? Order.new(id: @cart.id) : Order.find(@cart.id)
-    end
-
-    def countries
-      @countries = Country.all
     end
 
     def starting_order

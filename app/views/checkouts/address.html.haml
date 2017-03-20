@@ -9,8 +9,24 @@
         .col-md-5.col-md-offset-1
           %h3.general-subtitle Shipping Address
     .row
-      = render 'billing_address', field: field
-      = render 'shipping_address', field: field
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle Billing Address
+          %p.general-info-text all fields are required
+          = field.simple_fields_for :billing, @billing_address do |billing_field|
+            = render 'billing_address'
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle Shipping Address
+        .shipping
+          = field.simple_fields_for :shipping, @shipping_address do |shipping_field|
+            = render 'shipping_address'
+            .form-group.checkbox
+              %label.checkbox-label
+                %input.checkbox-input{type: "checkbox", name: 'as_billing', hidden: "true"}
+                %span.checkbox-icon
+                  %i.fa.fa-check
+                %span.checkbox-text Use Billing Adress
     .general-text-align.mb-60
       %p.in-gold-500.font-18 Order Summary
       %table.general-summary-table
