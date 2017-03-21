@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :orders, dependent: :delete_all
+  has_many :orders, dependent: :nullify
   has_many :reviews, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
   has_one :picture, as: :imageable, dependent: :destroy
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
 
   validates :firstname, :lastname, length: { maximum: 50 }
-  validates :email, length: { maximum: 63 }, presence: true, uniqueness: true 
+  validates :email, length: { maximum: 63 }, presence: true
 
   mount_uploader :avatar, ImageUploader
 
@@ -22,6 +22,9 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      user.firstname = auth.info.first_name
+      user.lastname = auth.info.last_name
+      user.avatar = auth.info.cover
     end
   end
 end

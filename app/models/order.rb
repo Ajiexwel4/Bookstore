@@ -6,8 +6,8 @@ class Order < ApplicationRecord
   belongs_to :user
   has_one :billing_address, dependent: :destroy
   has_one :shipping_address, dependent: :destroy
-  has_one :delivery
-  has_one :credit_card
+  has_one :delivery, dependent: :nullify
+  has_one :credit_card, dependent: :destroy
 
   scope :all_by_date, ->{ order(:created_at) }
 

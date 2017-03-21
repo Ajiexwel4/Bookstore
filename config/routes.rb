@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :reviews  
   resources :checkouts
 
-  resource :user, only: [:edit] do
+  resource :user, only: [:edit, :destroy] do
     collection do
       patch 'update_password'
       patch 'update_billing_address'

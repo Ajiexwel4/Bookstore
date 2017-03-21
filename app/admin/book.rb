@@ -3,7 +3,7 @@ ActiveAdmin.register Book do
   
   index do
     selectable_column
-    column :cover { |book| image_tag book.cover_url(:small) unless book.cover.blank? }
+    column :cover #{ |book| image_tag book.cover_url(:small) unless book.cover.blank? }
     column :category
     column :title
     column :authors

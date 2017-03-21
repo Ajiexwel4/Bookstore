@@ -1,9 +1,8 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title Log In      
-    - if devise_mapping.omniauthable?
-      - resource_class.omniauth_providers.each do |provider|        
-        = link_to '', omniauth_authorize_path(resource_name, provider), class: "general-login-icon fa fa-facebook-official"       
+    %h3.general-login-title Log In
+    = link_to user_facebook_omniauth_authorize_path, class: "general-login-icon" do
+      %i.fa.fa-facebook-official
     %p.general-login-text or
   .general-form
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
