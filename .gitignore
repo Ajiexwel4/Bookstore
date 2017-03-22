@@ -19,5 +19,4 @@
 /config/database.yml
 /db/schema.rb
 /public/uploads/
-/config/initializers/constants.rb
-.env
+/config/secrets.yml
