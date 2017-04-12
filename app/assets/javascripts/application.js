@@ -11,6 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready().on("turbolinks:load", function() {
+  $('.alert').fadeOut(3000);
+});
+

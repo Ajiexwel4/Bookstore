@@ -1,0 +1,34 @@
+%main.container
+  = render 'steps'
+  = simple_form_for @order, url: checkout_path, method: :put, class: 'res-mb-100' do |field|
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle Billing Address
+          %p.general-info-text all fields are required
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle Shipping Address
+    .row
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle Billing Address
+          %p.general-info-text all fields are required
+        = field.simple_fields_for :billing, @billing_address do |field|
+          = render 'billing_address', billing_field: field
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle Shipping Address
+        .shipping
+          = field.simple_fields_for :shipping, @shipping_address do |field|
+            = render 'shipping_address', shipping_field: field
+            .form-group.checkbox
+              %label.checkbox-label
+                %input.checkbox-input{type: "checkbox", name: 'as_billing', hidden: "true"}
+                %span.checkbox-icon
+                  %i.fa.fa-check
+                %span.checkbox-text Use Billing Adress
+    .general-text-align.mb-60
+      %p.in-gold-500.font-18 Order Summary
+      %table.general-summary-table
+        = render 'summary'    
+      = field.submit "Save and Continue", class: "btn btn-default center-block mb-20"

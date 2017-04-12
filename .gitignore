@@ -15,3 +15,10 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+/config/database.yml
+/db/schema.rb
+/public/uploads/
+/config/secrets.yml
+# Ignore application configuration
+/config/application.yml

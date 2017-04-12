@@ -1,0 +1,26 @@
+%header.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Bookstore', root_path, class: "navbar-brand"
+    - if @cart      
+      = link_to @cart, class: 'shop-link pull-right hidden-xs' do
+        %span.shop-icon
+          %span.shop-quantity
+            = @cart.line_items.count
+    #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
+      .hidden-xs
+        %ul.nav.navbar-nav
+          %li.dropdown
+            = link_to 'Home', '#', class: 'dropdown-toggle', 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"
+            %ul.dropdown-menu
+              - Category.all.each do |category|
+                %li
+                  = link_to category.name, root_path(category_id: category.id), class: 'collapse-link'
+          %li.dropdown
+            = link_to 'Shop', catalog_path
+          = render 'layouts/navigation'

@@ -1,0 +1,39 @@
+%main.container
+  %h1.general-title-margin Сatalog
+  .hidden-xs.clearfix
+    = render 'sorting_books'
+    %ul.list-inline.pt-10.mb-25.mr-240
+      %li.mr-35
+        = link_to catalog_path(sorting: 'by_title'), class: 'a filter-link' do
+          All
+          %span.badge.general-badge
+            = Book.all.count
+      - @categories.each do |category|
+        %li.mr-35
+          = link_to catalog_path(category_id: category.id), class: 'filter-link' do
+            = category.name
+            %span.badge.general-badge 
+              = category.books.count   
+  .mb-120
+    .row
+      - @books.decorate.each do |book|
+        .col-xs-6.col-sm-3
+          .general-thumb-wrap
+            .thumbnail.general-thumbnail
+              = image_tag(book.cover, class: 'img-shadow general-thumbnail-img', alt: 'design-book')              
+              .thumb-hover
+                .general-thumb-link-wrap
+                  = link_to book_path(book), class: 'thumb-hover-link' do
+                    %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+                  = link_to line_items_path(book_id: book), method: :post, class: 'thumb-hover-link' do
+                    %i.fa.fa-shopping-cart.thumb-icon
+          .general-thumb-info
+            %p.title
+              = book.title
+            %p.font-16.in-gold-500 
+              = book.price
+            %span.divider-sm
+            %p.lead.small
+              = book.authors
+    .text-center
+      = link_to_next_page @books, 'View More', class: 'btn btn-primary'

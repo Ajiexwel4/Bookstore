@@ -1,0 +1,7 @@
+.col-sm-4
+  .input-group.general-input-group
+    = form_tag @cart, method: :get do
+      = label_tag :coupon_code, "Enter Your Coupon Code", class: "input-label"
+      = text_field_tag :coupon_code, nil, placeholder: "Enter Your Coupon Code", class: "form-control mb-30"
+      %div
+        = submit_tag 'Update cart', class: 'btn btn-primary mb-15 res-block'

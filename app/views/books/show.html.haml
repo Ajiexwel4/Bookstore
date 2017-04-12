@@ -1,0 +1,65 @@
+%main.container
+  %a.general-back-link{href: "javascript:history.back();"}
+    %i.fa.fa-long-arrow-left.mr-15
+    Back to results
+  .row
+    .col-sm-6
+      .product-gallery
+        .mb-20
+          = image_tag(book.cover.url) if book.cover?        
+        .images.clearfix
+          - if book.pictures.any?
+            = book.pictures.each do |image|
+              %a.img-link{href: "#"}
+                = image_tag(image)
+          %a.img-link{href: "#"}
+            = image_tag(book.cover.url) if book.cover?           
+          %a.img-link{href: "#"}
+            = image_tag(book.cover.url) if book.cover?  
+          %a.img-link{href: "#"}
+            = image_tag(book.cover.url) if book.cover?  
+    .col-sm-6
+      %h1.mt-res-0 
+        = book.title
+      %p.lead.small
+        = book.authors
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10
+            = book.price
+        = form_tag line_items_path(book_id: book), method: :post do
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              .input-link
+                %i.fa.fa-minus.line-height-40.decrement            
+              = text_field_tag 'quantity', 1, class: 'form-control quantity-input'
+              .input-link
+                %i.fa.fa-plus.line-height-40.increment
+          .col-xs-7.col-md-5
+            - if !@book.in_stock.zero?
+              = submit_tag 'Add to Cart', class: "btn btn-default pull-right general-position", name: nil          
+      .general-info-wrap.divider-lg
+        %p Description
+        %p.lead.small.line-height-2
+          = book.description          
+          .in-gold-500.ml-10.more Read More
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Year of publication
+          %p.lead.small.pull-right
+            = book.publication_at
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Dimensions
+          %p.lead.small.pull-right
+            = book.dimension
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Materials
+          %p.lead.small.pull-right
+            = book.material
+  %h3.in-gold-500.mb-25 
+    = "Reviews (#{@book.reviews.approved.count || 0})"             
+  = render 'reviews/reviews'
+  = render 'reviews/form'
+  %br

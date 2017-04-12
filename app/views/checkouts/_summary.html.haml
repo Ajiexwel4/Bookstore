@@ -1,0 +1,19 @@
+%tr
+  %td
+    %p.font-16 Item Total:
+  %td
+    %p.font-16 
+      = order.price
+- if @order.delivery      
+  %tr
+    %td
+      %p.font-16 Shipping:
+    %td
+      %p.font-16 
+        = order.delivery_price
+%tr
+  %td
+    %strong.font-17 Order Total: 
+  %td
+    %strong.font-18
+      = total_price_with_shipping

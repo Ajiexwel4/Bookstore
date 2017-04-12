@@ -1,0 +1,15 @@
+.mb-35
+  %h3 Best Sellers
+  .row
+    - @bestsellers.each do |book|
+      .col-sm-6.col-md-3
+        .general-thumb-wrap
+          .thumbnail.general-thumbnail{class: "#{'.dissabled' if book.in_stock.zero?}"}
+            = image_tag(book.cover, class: 'img-shadow general-thumbnail-img', alt: 'design-book')            
+            .thumb-hover
+              .general-thumb-link-wrap
+                = link_to book_path(book), class: 'thumb-hover-link' do
+                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+                = link_to line_items_path(book_id: book), method: :post, class: 'thumb-hover-link' do
+                  %i.fa.fa-shopping-cart.thumb-icon
+ 

@@ -1,0 +1,32 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title Log In
+    = link_to user_facebook_omniauth_authorize_path, class: "general-login-icon" do
+      %i.fa.fa-facebook-official
+    %p.general-login-text or
+  .general-form
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group.mb-30
+        %label.control-label.input-label Enter Email
+        = f.input :email, label: false, required: false, autofocus: true, placeholder: 'Enter Email', id: "email", class: "form-control"
+      .form-group.mb-30
+        %label.control-label.input-label Password
+        = f.input :password, required: false, label: false, placeholder: 'Password', id: "password", class: "form-control"
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "Forgot password?", new_password_path(resource_name), class: "help-block in-gold-500"
+      .form-group.mb-30
+        %label.control-label.input-label Confirm Password
+        = f.input :password, required: false, label: false, placeholder: 'Confirm Password', id: 'confirm', class: 'form-control'       
+      - if devise_mapping.rememberable?
+        .form-group.checkbox.text-center.mb-30
+          %label.checkbox-label
+            = f.check_box :remember_me, class: "checkbox-input", hidden: true
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text Remember me
+        .text-center      
+          = f.button :submit, "Back to store"
+        %br
+  %p.general-sign-text.text-center 
+    Don’t have an Account?
+    = link_to "Sign up", new_registration_path(resource_name), class: 'in-gold-500'

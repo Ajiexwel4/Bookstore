@@ -1,0 +1,47 @@
+.row.mb-20
+  .col-sm-3
+    %h3.general-subtitle Shipping Address
+    %p.general-address
+      = order.customer_name_by_address_type('shipping')
+      - if edit
+        = link_to "edit", wizard_path(:address), class: 'general-edit'
+      %br
+      = order.address_by_type('shipping')
+      %br
+      = order.city_by_address_type('shipping')
+      %br
+      = order.country_by_address_type('shipping')
+      %br
+      = order.phone_by_address_type('shipping')
+  .col-sm-3
+    %h3.general-subtitle Billing Address
+    %p.general-address
+      = order.customer_name_by_address_type('billing')
+      - if edit
+        = link_to "edit", wizard_path(:address), class: 'general-edit'
+      %br
+      = order.address_by_type('billing')
+      %br
+      = order.city_by_address_type('billing')
+      %br
+      = order.country_by_address_type('billing')
+      %br
+      = order.phone_by_address_type('shipping')
+  .col-sm-3
+    %h3.general-subtitle Shipments
+    %p.general-address
+      = order.delivery
+      - if edit
+        = link_to "edit", wizard_path(:delivery), class: 'general-edit'
+      %br
+      = order.delivery_days
+      %br
+      = order.delivery_price
+  .col-sm-3
+    %h3.general-subtitle Payment Information
+    %p.general-address
+      = order.card_number
+      - if edit
+        = link_to "edit", wizard_path(:payment), class: 'general-edit'
+      %br
+      = order.period_of_cart

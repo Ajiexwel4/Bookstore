@@ -1,0 +1,27 @@
+class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def default_url  
+    "/images/fallback/" + [version_name,"default.png"].compact.join('_')
+  end
+
+  version :thumb do
+    process resize_to_fit: [400, 300]
+  end
+
+  version :small do
+    process resize_to_fit: [60, 80]
+  end
+
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+end

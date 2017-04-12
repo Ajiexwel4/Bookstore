@@ -1,0 +1,36 @@
+= simple_form_for @book, html: { multipart: true } do |f|
+  - if @book.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
+      %ul
+        - @book.errors.full_messages.each do |msg|
+          %li= msg
+  .field    
+    = f.input :title
+  .field
+    = f.label "Authors:"
+    = f.collection_check_boxes :author_ids, Author.all, :id, :lastname
+  .field    
+    = f.input :description
+  .field
+    = f.input :price
+  .field
+    = f.input :publication_at, collection: 1990..Time.now.year
+  .field
+    = f.input :dimension
+  .field
+    = f.input :material
+  .field
+    = f.input :in_stock
+  .field
+    = f.label "Category:"
+    = f.collection_check_boxes :category_ids, Category.all, :id, :name
+  .field
+    = f.label "Cover:"
+    = f.file_field :cover
+    - if f.object.cover?
+      = image_tag(f.object.cover.thumb.url)
+      = f.label :remove_cover
+      = f.check_box :remove_cover
+  .actions
+    = f.button :submit
