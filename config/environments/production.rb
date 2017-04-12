@@ -101,7 +101,7 @@ Rails.application.configure do
     enable_starttls_auto: true,
     authentication: "plain",
     domain: 'bookstoreforg.herokuapp.com',
-    user_name: Rails.application.secrets.GMAIL_USERNAME,
-    password: Rails.application.secrets.GMAIL_PASSWORD
+    user_name: Figaro.env.GMAIL_USERNAME,
+    password: Figaro.env.GMAIL_PASSWORD
   }
 end
